@@ -15,7 +15,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // Cargar configuración
-require_once 'src/app/config.php';
+require_once 'Futmatch/src/app/config.php';
 
 // Resalta la página actual en el navbar
 $current_page = 'index';
