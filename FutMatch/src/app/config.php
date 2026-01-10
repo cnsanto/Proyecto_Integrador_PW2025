@@ -12,9 +12,9 @@
 // CONEXIÓN A LA BASE DE DATOS
 // ===================================
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'futmatch_db');
+define('DB_USERNAME', 'u586475596_camilitaroot');
+define('DB_PASSWORD', '@Ze$Lf|!:&2');
+define('DB_NAME', 'u586475596_futmatch_db');
 
 try {
     $conn = new PDO("mysql:host=" . DB_SERVER . ";dbname=" . DB_NAME . ";charset=utf8mb4", DB_USERNAME, DB_PASSWORD);

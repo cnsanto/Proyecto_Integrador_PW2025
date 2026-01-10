@@ -2610,7 +2610,7 @@ SELECT
     p.abierto,
     p.goles_equipo_A,
     p.goles_equipo_B,
-    P.id_reserva,
+    p.id_reserva,
     
     -- Fecha y hora (de la reserva)
     DATE_FORMAT(r.fecha, '%d/%m/%Y') AS fecha_partido,
