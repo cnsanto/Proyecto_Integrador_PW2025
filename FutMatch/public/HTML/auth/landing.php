@@ -18,21 +18,6 @@ $page_title = "FutMatch";
 $page_css = [CSS_PAGES_LANDING];
 
 include HEAD_COMPONENT;
-
-// Helper / Guía de la página
-$helper_title = "Guía: Página de Inicio";
-$helper_content = "
-    <p><strong>¡Bienvenido a FutMatch!</strong></p>
-    <p>Esta es la página de aterrizaje donde puedes elegir cómo interactuar con el sitio:</p>
-    <ul>
-        <li><strong>Entrar como invitado:</strong> Explora canchas y partidos sin necesidad de cuenta.</li>
-        <li><strong>Iniciar sesión:</strong> Accede a tu cuenta para gestionar partidos, equipos y reservas.</li>
-        <li><strong>Registrarse:</strong> Crea una cuenta nueva si aún no tienes una.</li>
-        <li><strong>Gestores de Cancha:</strong> Si tienes un complejo, regístralo desde el enlace al pie de página.</li>
-    </ul>
-";
-include __DIR__ . '/../helper.php';
-
 ?>
 
 <body>

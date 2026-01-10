@@ -50,4 +50,41 @@ document.addEventListener("DOMContentLoaded", function () {
       setTimeout(typeWriter, 500);
     }
   }
+
+  // --- Email Copy to Clipboard Logic ---
+  const copyEmailBtns = document.querySelectorAll(".copy-email-btn");
+  const toastElement = document.getElementById("emailToast");
+  let toastInstance = null;
+
+  if (toastElement) {
+    // Initialize bootstrap toast
+    // @ts-ignore
+    toastInstance = new bootstrap.Toast(toastElement, { delay: 3000 });
+  }
+
+  copyEmailBtns.forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      const email = this.getAttribute("data-email");
+
+      if (email) {
+        navigator.clipboard.writeText(email).then(
+          function () {
+            // Success
+            if (toastInstance) {
+              toastInstance.show();
+            } else {
+              alert("Email copied to clipboard: " + email);
+            }
+          },
+          function (err) {
+            // Error
+            console.error("Could not copy text: ", err);
+            // Fallback
+            prompt("Copy this email:", email);
+          }
+        );
+      }
+    });
+  });
 });

@@ -19,9 +19,6 @@ SET time_zone = "+00:00";
 
 --
 -- Database: `futmatch_db`
---
-CREATE DATABASE IF NOT EXISTS `futmatch_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `futmatch_db`;
 
 -- --------------------------------------------------------
 
@@ -71,23 +68,6 @@ CREATE TABLE `calificaciones_jugadores` (
 INSERT INTO `calificaciones_jugadores` (`id_calificacion`, `id_partido`, `id_jugador_evaluador`, `id_jugador_evaluado`, `puntuacion`, `reportado`, `comentario`) VALUES
 (1, 4, 3, 4, 4, 0, 'Excelente partido! Me encanta jugar con Ana. '),
 (2, 1, 1, 4, 5, 0, 'Ana fue solicitante en mi partido. Desde un principio fue muy respetuosa y fue muy ameno jugar con ella. ');
-
---
--- Triggers `calificaciones_jugadores`
---
-DROP TRIGGER IF EXISTS `actualizar_reputacion_jugador`;
-DELIMITER $$
-CREATE TRIGGER `actualizar_reputacion_jugador` AFTER INSERT ON `calificaciones_jugadores` FOR EACH ROW BEGIN
-    UPDATE jugadores 
-    SET reputacion = (
-        SELECT AVG(puntuacion) 
-        FROM calificaciones_jugadores 
-        WHERE id_jugador_evaluado = NEW.id_jugador_evaluado
-    )
-    WHERE id_jugador = NEW.id_jugador_evaluado;
-END
-$$
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -278,24 +258,6 @@ CREATE TABLE `equipos_partidos` (
 INSERT INTO `equipos_partidos` (`id_equipo`, `id_partido`, `es_ganador`) VALUES
 (1, 4, 0),
 (2, 4, 0);
-
---
--- Triggers `equipos_partidos`
---
-DROP TRIGGER IF EXISTS `validate_equipos_partido`;
-DELIMITER $$
-CREATE TRIGGER `validate_equipos_partido` BEFORE INSERT ON `equipos_partidos` FOR EACH ROW BEGIN
-    DECLARE equipos_count INT;
-    SELECT COUNT(*) INTO equipos_count 
-    FROM equipos_partidos 
-    WHERE id_partido = NEW.id_partido;
-    
-    IF equipos_count >= 2 THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Un partido no puede tener más de 2 equipos';
-    END IF;
-END
-$$
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -2699,17 +2661,6 @@ SELECT
     (SELECT COUNT(*) FROM participantes_partidos pp_b 
      WHERE pp_b.id_partido = p.id_partido AND pp_b.equipo = 2) AS cant_participantes_equipo_b,
 
-    
-    -- NO SE USA
-    -- Información del equipo del jugador (el equipo al que pertenece)
-    -- e_propio.id_equipo AS id_equipo_del_jugador,
-    -- e_propio.nombre AS nombre_equipo_del_jugador,
-    -- e_propio.foto AS foto_equipo_del_jugador,
-    
-    -- Información del equipo rival
-    -- e_rival.id_equipo AS id_equipo_rival,
-    -- e_rival.nombre AS nombre_equipo_rival,
-    -- e_rival.foto AS foto_equipo_rival,
 
     -- Información del torneo si la hubiere 
     
@@ -2933,25 +2884,6 @@ INNER JOIN superficies_canchas s ON c.id_superficie = s.id_superficie;
 
 
 /* PERFIL JUGADOR
-
-BBDD: USUARIOS
-id_usuario, =session ID_USER
-email, => no aparece en el perfil, pero sirve para traer el contacto
-nombre, => aparece en el perfil
-apellido, => aparece en el perfil
-id_estado, => aparece en el perfil
-fecha_registro => aparece en el perfil (usuario desde...)
-
-BBDD: JUGADOR:
-id_jugador, = id_usuario
-username, => aparece en el perfil
-telefono => no aparece en el perfil, pero sirve para contacto
-foto_perfil, => aparece en el perfil
-banner => aparece en el perfil
-fecha_nacimiento, => aparece en el perfil (edad)
-id_sexo, => aparece en el perfil
-id_posicion, => NO SE USA
-reputación, => aparece en el perfil
 */
 
 DROP VIEW IF EXISTS vista_perfil_jugador;

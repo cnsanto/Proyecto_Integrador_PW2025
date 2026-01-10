@@ -63,7 +63,7 @@ $cv = [
         'backoffice' => [
             'puesto' => 'Back Office de Desarrollo | Project Management',
             'empresa' => 'SoftGuard Tech de Argentina SRL',
-            'periodo' => 'Enero 2025 - Junio 2026',
+            'periodo' => 'Enero 2025 - Junio 2025',
             'tareas' => [
                 'Organización de tareas en el área de Desarrollo.',
                 'Asistencia y planificación de proyectos.',
@@ -107,10 +107,10 @@ $cv = [
         'titulo' => 'Camila Santo',
         'subtitulo' => 'Software Developer',
         'intro' => 'Hi!',
-        'carta_presentacion' => 'Thank you very much for visiting my portfolio. 
+        'carta_presentacion' => 'Thank you for visiting my portfolio. 
         Here you will find a summary of my professional and academic background.
-        You will also be able to explore my technical and language skills, as well as project demos. 
-        If you are interested in my profile for a job opportunity, you can find my contact information both at the top and at the bottom of the page.      
+        You will also be able to explore my skills with some project demos. 
+        If you are interested in my profile for a job opportunity, you can find my contact information both at the top and at the bottom of this page.      
         A little about me: I am a highly energetic person, passionate about learning and growing, and always willing to challenge myself in every project. 
         I am detail-oriented and enjoy solving problems in creative ways.        
         I have a strong interest in design and attention to detail. 
@@ -151,7 +151,7 @@ $cv = [
         'backoffice' => [
             'puesto' => 'Development Back Office | Project Management',
             'empresa' => 'SoftGuard Tech de Argentina SRL',
-            'periodo' => 'January 2025 – June 2026',
+            'periodo' => 'January 2025 – June 2025',
             'tareas' => [
                 'Organized tasks within the Development area.',
                 'Assisted in development planning.',
@@ -212,7 +212,6 @@ $data = $cv[$idioma];
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- CSS Proyectos -->
-    <!-- Note: We are linking local index.css via relative path since it's in the same folder -->
     <link rel="stylesheet" href="index.css?v=<?= time() ?>" />
 </head>
 
@@ -221,18 +220,18 @@ $data = $cv[$idioma];
     <!-- Top Header (Lang + Socials) -->
     <div class="top-header">
 
-        <!-- CV Download Dropdown -->
+        <!-- CV View Dropdown -->
         <div class="dropdown">
-            <button class="btn btn-sm text-muted dropdown-toggle border-0 me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Download CV">
-                <i class="bi bi-file-earmark-arrow-down-fill fs-5"></i> Download CV
+            <button class="btn btn-sm text-muted dropdown-toggle border-0 me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Go to CV">
+                <i class="bi bi-file-earmark-arrow-down-fill fs-5"></i> CV
             </button>
             <ul class="dropdown-menu dropdown-menu-dark shadow">
-                <li><a class="dropdown-item" href="CV Camila Santo ESP.pdf" download><i class="bi bi-flag-fill me-2"></i>Español</a></li>
-                <li><a class="dropdown-item" href="CV Camila Santo ENG.pdf" download><i class="bi bi-flag me-2"></i>English</a></li>
+                <li><a class="dropdown-item" href="https://drive.google.com/file/d/12dJlfdxKq5GtW7a6Vfyw2u400JxZJCMv/view?usp=drive_link" target="_blank"><i class="bi bi-flag-fill me-2"></i>Español</a></li>
+                <li><a class="dropdown-item" href="https://drive.google.com/file/d/1WO_OnuFwMZa9AKB_hs03HWMhZbDpJOyj/view?usp=drive_link" target="_blank"><i class="bi bi-flag me-2"></i>English</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="CV Camila Santo ESP-ENG.pdf" download><i class="bi bi-files me-2"></i>Ambos / Both</a></li>
+                <li><a class="dropdown-item" href="https://drive.google.com/file/d/1WLsTf_6H9nsn2q9oeuQDjIT-kqePhaLr/view?usp=drive_link" target="_blank"><i class="bi bi-files me-2"></i>Ambos / Both</a></li>
             </ul>
         </div>
 
@@ -240,7 +239,7 @@ $data = $cv[$idioma];
             <a href="https://wa.link/hzrlh7" target="_blank" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
             <a href="https://www.linkedin.com/in/camila-natalia-santo/" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
             <a href="https://github.com/cnsanto" target="_blank" title="GitHub"><i class="bi bi-github"></i></a>
-            <a href="mailto:cnsanto@gmail.com" title="Email"><i class="bi bi-envelope-fill"></i></a>
+            <a href="javascript:void(0);" class="copy-email-btn" data-email="cnsanto@gmail.com" title="Copy Email"><i class="bi bi-envelope-fill"></i></a>
         </div>
         <div style="width: 1px; height: 20px; background: rgba(255,255,255,0.2);"></div>
         <div class="lang-toggle">
@@ -281,8 +280,7 @@ $data = $cv[$idioma];
                     <a href="#education" class="btn btn-glow"><?= $data['educacion'] ?></a>
                     <a href="#languages" class="btn btn-glow"><?= $data['idiomas'] ?></a>
                     <a href="#skills" class="btn btn-glow"><?= $data['skills_titulo'] ?></a>
-                    <!-- Point to footer for contact since section was removed -->
-                    <a href="mailto:cnsanto@gmail.com" class="btn btn-glow"><?= $data['contacto'] ?></a>
+                    <a href="javascript:void(0);" class="btn btn-glow copy-email-btn" data-email="cnsanto@gmail.com"><?= $data['contacto'] ?></a>
                 </div>
             </div>
         </div>
@@ -307,7 +305,13 @@ $data = $cv[$idioma];
                         <?php else: ?>
                             <p class="text-muted">Plataforma de Emparejamiento de Partidos. Conecta con jugadors, reserva canchas y organiza torneos al instante.</p>
                         <?php endif; ?>
-                        <span class="btn btn-sm btn-outline-primary rounded-pill mt-3"><?= $data['ver_mas'] ?> <i class="bi bi-arrow-right"></i></span>
+                        <div class="lg:flex lg:justify-between">
+                            <span class="btn btn-sm btn-outline-primary rounded-pill mt-3"><?= $data['ver_mas'] ?> <i class="bi bi-arrow-right"></i></span>
+                            <a href="<?= ($idioma === 'eng') ? 'https://docs.google.com/document/d/1QQyxJHrCe9ZWa7SaeedMzFfEZLrHTJDU3_Pu6sJex5c/edit?usp=sharing' :
+                                            'https://docs.google.com/document/d/1r9KB3jjeax0sgqph6oOu-JUa5Ktfcz8BU3MGGbKyxXA/edit?usp=sharing' ?>"
+                                target="_blank" class="btn btn-sm btn-outline-primary rounded-pill mt-3">
+                                <?= ($idioma === 'eng') ? "User Manual" : "Manual de usuario" ?> <i class="bi bi-arrow-right"></i></a>
+                        </div>
                     </div>
                 </a>
             </div>
@@ -395,11 +399,23 @@ $data = $cv[$idioma];
                 <a href="https://wa.link/hzrlh7" class="text-white hover-primary"><i class="bi bi-whatsapp"></i></a>
                 <a href="https://www.linkedin.com/in/camila-natalia-santo/" class="text-white hover-primary"><i class="bi bi-linkedin"></i></a>
                 <a href="https://github.com/cnsanto" class="text-white hover-primary"><i class="bi bi-github"></i></a>
-                <a href="mailto:cnsanto@gmail.com" class="text-white hover-primary"><i class="bi bi-envelope-fill"></i></a>
+                <a href="javascript:void(0);" class="text-white hover-primary copy-email-btn" data-email="cnsanto@gmail.com"><i class="bi bi-envelope-fill"></i></a>
             </div>
             <p class="mb-0">&copy; <?= date('Y') ?> Camila Natalia Santo. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast-notification" class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3" style="z-index: 1055;">
+        <div id="emailToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <i class="bi bi-check-circle-fill me-2"></i> Email copied to clipboard!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap JS (Required for Dropdowns) -->
     <script src="<?= JS_BOOTSTRAP ?>"></script>
