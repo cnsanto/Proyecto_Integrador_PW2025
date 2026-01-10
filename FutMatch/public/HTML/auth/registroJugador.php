@@ -17,7 +17,7 @@ include HEAD_COMPONENT;
 </head>
 
 <body>
-  <header class="hero bg-image" style="background-image: url('<?= IMG_PATH ?>bg2.jpg');">
+  <header class="hero bg-image" style="background-image: url('<?= IMG_LANDING ?>');">
     <!-- Overlay más oscuro para el formulario de registro -->
     <div class="hero-overlay" style="background: rgba(0, 0, 0, 0.65);"></div>
 
@@ -47,8 +47,7 @@ include HEAD_COMPONENT;
                       id="inputNombre"
                       name="nombre"
                       required
-                      value="<?= htmlspecialchars($_POST['nombre'] ?? '') ?>"
-                    />
+                      value="<?= htmlspecialchars($_POST['nombre'] ?? '') ?>" />
                     <!--Para agregar una descripcion: -->
 
                     <div class="invalid-feedback">El nombre es obligatorio.</div>
@@ -63,8 +62,7 @@ include HEAD_COMPONENT;
                       id="inputApellido"
                       name="apellido"
                       required
-                      value="<?= htmlspecialchars($_POST['apellido'] ?? '') ?>"
-                    />
+                      value="<?= htmlspecialchars($_POST['apellido'] ?? '') ?>" />
                     <div class="invalid-feedback">El apellido es obligatorio.</div>
                   </div>
 
@@ -77,8 +75,7 @@ include HEAD_COMPONENT;
                       id="inputUsername"
                       name="username"
                       required
-                      value="<?= htmlspecialchars($_POST['username'] ?? '') ?>"
-                    />
+                      value="<?= htmlspecialchars($_POST['username'] ?? '') ?>" />
                     <div class="invalid-feedback">El nombre de usuario es obligatorio.</div>
                   </div>
 
@@ -91,8 +88,7 @@ include HEAD_COMPONENT;
                       id="inputFechaDeNacimiento"
                       name="fechaNacimiento"
                       required
-                      value="<?= htmlspecialchars($_POST['fechaNacimiento'] ?? '') ?>"
-                    />
+                      value="<?= htmlspecialchars($_POST['fechaNacimiento'] ?? '') ?>" />
                     <div class="invalid-feedback">Debes ser mayor de 18 años.</div>
                   </div>
 
@@ -104,8 +100,7 @@ include HEAD_COMPONENT;
                       id="inputGenero"
                       name="genero"
                       required
-                      value="<?= htmlspecialchars($_POST['genero'] ?? '') ?>"
-                    >
+                      value="<?= htmlspecialchars($_POST['genero'] ?? '') ?>">
                       <option value="" selected disabled>Seleccioná tu género</option>
                       <option value="2">Masculino</option>
                       <option value="1">Femenino</option>
@@ -124,8 +119,7 @@ include HEAD_COMPONENT;
                       name="email"
                       placeholder="tu@email.com"
                       required
-                      value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
-                    />
+                      value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" />
                     <div class="invalid-feedback">Ingresá un email válido.</div>
                   </div>
 
@@ -139,8 +133,7 @@ include HEAD_COMPONENT;
                       name="telefono"
                       placeholder="Ej: 11-1234-5678"
                       required
-                      value="<?= htmlspecialchars($_POST['telefono'] ?? '') ?>"
-                    />
+                      value="<?= htmlspecialchars($_POST['telefono'] ?? '') ?>" />
                     <div class="invalid-feedback">Ingresá un teléfono válido (solo números y guiones).</div>
                   </div>
 
@@ -154,8 +147,7 @@ include HEAD_COMPONENT;
                       name="password"
                       placeholder="Mínimo 8 caracteres"
                       required
-                      value="<?= htmlspecialchars($_POST['password'] ?? '') ?>"
-                    />
+                      value="<?= htmlspecialchars($_POST['password'] ?? '') ?>" />
                     <div class="invalid-feedback">
                       Mínimo 8 caracteres, una minúscula y un número.
                     </div>
@@ -170,8 +162,7 @@ include HEAD_COMPONENT;
                       id="inputPasswordConfirm"
                       name="passwordConfirm"
                       placeholder="Confirmá tu contraseña"
-                      required
-                    />
+                      required />
                     <div class="invalid-feedback">Las contraseñas no coinciden.</div>
                   </div>
 
@@ -183,8 +174,7 @@ include HEAD_COMPONENT;
                         type="checkbox"
                         id="checkTerminos"
                         name="terminos"
-                        required
-                      />
+                        required />
                       <label class="form-check-label" for="checkTerminos">
                         Acepto los <a href="#" class="text-decoration-none">términos y condiciones</a> de FutMatch
                       </label>
@@ -201,8 +191,7 @@ include HEAD_COMPONENT;
                         class="form-check-input"
                         type="checkbox"
                         id="checkPromociones"
-                        name="promociones"
-                      />
+                        name="promociones" />
                       <label class="form-check-label" for="checkPromociones">
                         Acepto recibir correos y promociones de FutMatch
                       </label>
@@ -219,7 +208,7 @@ include HEAD_COMPONENT;
                   <!-- Link a login -->
                   <div class="col-12 text-center mt-2">
                     <p class="mb-0">
-                      ¿Ya tenés cuenta? 
+                      ¿Ya tenés cuenta?
                       <a href="<?= PAGE_LANDING_PHP ?>" class="text-decoration-none">Iniciá sesión</a>
                     </p>
                   </div>
@@ -236,4 +225,5 @@ include HEAD_COMPONENT;
   <script src="<?= JS_BOOTSTRAP ?>"></script>
   <script src="<?= JS_REGISTRO_JUGADOR ?>"></script>
 </body>
+
 </html>

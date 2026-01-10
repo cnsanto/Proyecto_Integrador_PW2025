@@ -18,7 +18,7 @@ include HEAD_COMPONENT;
 </head>
 
 <body>
-  <header class="hero bg-image" style="background-image: url('<?= IMG_PATH ?>bg2.jpg');">
+  <header class="hero bg-image" style="background-image: url('<?= IMG_LANDING ?>');">
     <!-- Overlay más oscuro -->
     <div class="hero-overlay" style="background: rgba(0, 0, 0, 0.65);"></div>
 
