@@ -32,12 +32,12 @@ try {
 
     // Obtener reservas confirmadas de la cancha
     $sql = "SELECT 
-                r.fecha,
-                r.fecha_fin,
-                r.hora_inicio,
-                r.hora_fin,
-                r.id_estado
-            FROM reservas r
+                fecha,
+                fecha_fin,
+                hora_inicio,
+                hora_fin,
+                id_estado
+            FROM vista_reservas
             WHERE id_cancha = :id_cancha
             AND id_estado = 3
             ORDER BY fecha, hora_inicio";
