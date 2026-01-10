@@ -34,7 +34,7 @@ if (session_status() === PHP_SESSION_NONE) {
 // ===================================
 // RUTAS BASE
 // ===================================
-define("BASE_URL", "/Proyecto_Integrador_PW2025/FutMatch/"); // Ajusta según tu configuración de servidor
+define("BASE_URL", "/FutMatch/"); // Ajusta según tu configuración de servidor
 define("PUBLIC_PATH", BASE_URL . "public/");
 define("SRC_PATH", BASE_URL . "src/");
 
