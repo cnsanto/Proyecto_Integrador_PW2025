@@ -222,7 +222,7 @@ $data = $cv[$idioma];
 
         <!-- CV View Dropdown -->
         <div class="dropdown">
-            <button class="btn btn-sm text-muted dropdown-toggle border-0 me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Go to CV">
+            <button class="btn btn-sm text-muted dropdown-toggle border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="CV">
                 <i class="bi bi-file-earmark-arrow-down-fill fs-5"></i> CV
             </button>
             <ul class="dropdown-menu dropdown-menu-dark shadow">
@@ -234,6 +234,8 @@ $data = $cv[$idioma];
                 <li><a class="dropdown-item" href="https://drive.google.com/file/d/1WLsTf_6H9nsn2q9oeuQDjIT-kqePhaLr/view?usp=drive_link" target="_blank"><i class="bi bi-files me-2"></i>Ambos / Both</a></li>
             </ul>
         </div>
+
+        <div style="width: 1px; height: 20px; background: rgba(255,255,255,0.2);"></div>
 
         <div class="header-socials">
             <a href="https://wa.link/hzrlh7" target="_blank" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>

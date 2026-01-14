@@ -11,17 +11,25 @@
 // ===================================
 // CONEXIÓN A LA BASE DE DATOS
 // ===================================
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'u586475596_camilitaroot');
-define('DB_PASSWORD', '@Ze$Lf|!:&2');
-define('DB_NAME', 'u586475596_futmatch_db');
+
+if ($_SERVER['SERVER_NAME'] === 'localhost') {
+    $config = require __DIR__ . '/../../config.local.php';
+} else {
+    $config = require __DIR__ . '/../../config.production.php';
+}
 
 try {
-    $conn = new PDO("mysql:host=" . DB_SERVER . ";dbname=" . DB_NAME . ";charset=utf8mb4", DB_USERNAME, DB_PASSWORD);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    $pdo = new PDO(
+        "mysql:host={$config['DB_HOST']};dbname={$config['DB_NAME']};charset=utf8mb4",
+        $config['DB_USER'],
+        $config['DB_PASS'],
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ]
+    );
 } catch (PDOException $e) {
-    die("Error de conexión a la base de datos: " . $e->getMessage());
+    die("Error de conexión: " . $e->getMessage());
 }
 
 // ===================================
@@ -34,7 +42,7 @@ if (session_status() === PHP_SESSION_NONE) {
 // ===================================
 // RUTAS BASE
 // ===================================
-define("BASE_URL", "/FutMatch/"); // Ajusta según tu configuración de servidor
+define("BASE_URL", "/Proyecto_Integrador_PW2025/FutMatch/"); // Ajusta según tu configuración de servidor
 define("PUBLIC_PATH", BASE_URL . "public/");
 define("SRC_PATH", BASE_URL . "src/");
 
