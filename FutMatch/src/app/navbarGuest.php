@@ -134,3 +134,6 @@ function isActive($page_name, $current)
         </div>
     </div>
 </div>
+
+
+<script src="<?= JS_HELPER ?>"></script>

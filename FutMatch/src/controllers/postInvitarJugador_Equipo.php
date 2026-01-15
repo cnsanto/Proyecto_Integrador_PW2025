@@ -59,7 +59,12 @@ if (empty($jugadores)) {
 
 try {
     // Verificar que el usuario actual es miembro del equipo
-    $queryVerificar = 'SELECT COUNT(*) FROM jugadores_equipos WHERE id_jugador = :id_jugador AND id_equipo = :id_equipo';
+    $queryVerificar =
+        'SELECT COUNT(*) 
+            FROM jugadores_equipos 
+            WHERE id_jugador = :id_jugador 
+            AND id_equipo = :id_equipo
+            AND estado_solicitud = 3';
     $stmtVerificar = $conn->prepare($queryVerificar);
     $stmtVerificar->bindParam(':id_jugador', $id_invitador);
     $stmtVerificar->bindParam(':id_equipo', $id_equipo);

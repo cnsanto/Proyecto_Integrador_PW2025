@@ -7,14 +7,18 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+if (isset($_GET['idioma'])) {
+    $_SESSION['idioma'] = $_GET['idioma'];
+}
+
+$idioma = $_SESSION['idioma'] ?? 'eng';
+
 // Cargar configuración
 require_once 'FutMatch/src/app/config.php';
 
 // Resalta la página actual en el navbar
 $current_page = 'index';
 $page_title = "Inicio";
-
-$idioma = $_GET['idioma'] ?? 'eng';
 
 // Definición de datos
 $cv = [
@@ -304,15 +308,28 @@ $data = $cv[$idioma];
                         <h3 class="mb-3">FutMatch</h3>
                         <?php if ($idioma === 'eng'): ?>
                             <p class="text-muted">Football Matchmaking Platform. Connect with players, book pitches, and organize tournaments instantly.</p>
+                            <p class="text-muted">The texts of the page will be in Spanish, but I added english instructions for you to help you navigate the page.</p>
+                            <p class="text-muted">Look for the helper button in the bottom right corner of your screen!</p>
+                            <div class="d-flex flex-wrap">
+                                <span class="skill-tag fs-6 px-3 py-2 m-1">Full Stack</span>
+                                <span class="skill-tag fs-6 px-3 py-2 m-1">Bootstrap</span>
+                                <span class="skill-tag fs-6 px-3 py-2 m-1">PHP</span>
+                                <span class="skill-tag fs-6 px-3 py-2 m-1">MySQL</span>
+                                <span class="skill-tag fs-6 px-3 py-2 m-1">JavaScript</span>
+                            </div>
                         <?php else: ?>
-                            <p class="text-muted">Plataforma de Emparejamiento de Partidos. Conecta con jugadors, reserva canchas y organiza torneos al instante.</p>
+                            <p class="text-muted">Plataforma de Emparejamiento de Partidos. Conecta con jugadores, reserva canchas y organiza torneos al instante.</p>
+                            <p class="text-muted">Si no sabés cómo navegar la página, buscá el botón de ayuda en la esquina inferior derecha de tu pantalla.</p>
+                            <div class="d-flex flex-wrap">
+                                <span class="skill-tag fs-6 px-3 py-2 m-1">Desarrollo Full Stack</span>
+                                <span class="skill-tag fs-6 px-3 py-2 m-1">Bootstrap</span>
+                                <span class="skill-tag fs-6 px-3 py-2 m-1">PHP</span>
+                                <span class="skill-tag fs-6 px-3 py-2 m-1">MySQL</span>
+                                <span class="skill-tag fs-6 px-3 py-2 m-1">JavaScript</span>
+                            </div>
                         <?php endif; ?>
                         <div class="lg:flex lg:justify-between">
                             <span class="btn btn-sm btn-outline-primary rounded-pill mt-3"><?= $data['ver_mas'] ?> <i class="bi bi-arrow-right"></i></span>
-                            <a href="<?= ($idioma === 'eng') ? 'https://docs.google.com/document/d/1QQyxJHrCe9ZWa7SaeedMzFfEZLrHTJDU3_Pu6sJex5c/edit?usp=sharing' :
-                                            'https://docs.google.com/document/d/1r9KB3jjeax0sgqph6oOu-JUa5Ktfcz8BU3MGGbKyxXA/edit?usp=sharing' ?>"
-                                target="_blank" class="btn btn-sm btn-outline-primary rounded-pill mt-3">
-                                <?= ($idioma === 'eng') ? "User Manual" : "Manual de usuario" ?> <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </a>
@@ -371,7 +388,7 @@ $data = $cv[$idioma];
                 <!-- Education -->
                 <h2 class="mb-4"><i class="bi bi-mortarboard me-2"></i> <?= $data['educacion'] ?></h2>
                 <div class="glass-card p-4 mb-5">
-                    <h4 class="mb-1"><?= $data['educacion_detalle']['institucion'] ?></h4>
+                    <h4 class="mb-1"><a href="https://web.upe.edu.ar/" target="_blank"><?= $data['educacion_detalle']['institucion'] ?></a></h4>
                     <p class="text-primary fw-bold mb-3"><?= $data['educacion_detalle']['titulo'] ?></p>
 
                     <ul class="text-muted ps-3 mb-0">

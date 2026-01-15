@@ -19,7 +19,7 @@ if ($_SERVER['SERVER_NAME'] === 'localhost') {
 }
 
 try {
-    $pdo = new PDO(
+    $conn = new PDO(
         "mysql:host={$config['DB_HOST']};dbname={$config['DB_NAME']};charset=utf8mb4",
         $config['DB_USER'],
         $config['DB_PASS'],
@@ -145,6 +145,7 @@ define("NAVBAR_ADMIN_CANCHA_COMPONENT", __DIR__ . "/navbarAdminCancha.php");
 define("NAVBAR_ADMIN_SISTEMA_COMPONENT", __DIR__ . "/navbarAdminSistema.php");
 define("NAVBAR_GUEST_COMPONENT", __DIR__ . "/navbarGuest.php");
 define("NAVBAR_JUGADOR_COMPONENT", __DIR__ . "/navbarJugador.php");
+define("HELPER_COMPONENT", __DIR__ . "/helper.php");
 
 // ===================================
 // CONTROLLERS
@@ -230,6 +231,7 @@ define("JS_PERFIL_CANCHA_BASE", JS_COMPONENTS_PATH . "perfilCancha.js");
 define("JS_PERFIL_JUGADOR_BASE", JS_COMPONENTS_PATH . "perfilJugador.js");
 define("JS_TOAST_MODULE", JS_COMPONENTS_PATH . "toast.js");
 define("JS_AGENDA", JS_COMPONENTS_PATH . "agenda.js");
+define("JS_HELPER", JS_COMPONENTS_PATH . "helper.js");
 
 //=================================
 // PAGES

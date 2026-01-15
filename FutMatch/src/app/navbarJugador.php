@@ -692,3 +692,4 @@ function isActive($page_name, $current)
 <script src="<?= JS_TOAST_MODULE ?>"></script>
 <script src="<?= JS_NAVBAR_JUGADOR ?>"></script>
 <script src="<?= JS_UPDATE_USUARIO ?>"></script>
+<script src="<?= JS_HELPER ?>"></script>

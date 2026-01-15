@@ -35,11 +35,26 @@ $page_title = 'Inicio - FutMatch';
 // CSS adicional específico de esta página
 $page_css = [];
 
+$helper_body_es = '
+<p>Esta es la página de INICIO de un jugador.</p>
+<p>En la parte superior podrás ver las diferentes secciones a las que se puede acceder en esta cuenta.</p>
+<p>Si estás viendo esto desde tu celular, entonces podés acceder a dichas secciones desde el menú lateral izquierdo, 
+haciendo click en el menú "hamburguesa" que se encuentra en la parte superior izquierda de la pantalla.</p>
+';
+
+$helper_body_en = '
+<p>This is the STARTING PAGE of a player.</p>
+<p>At the top you can see the different sections that can be accessed in this account.</p>
+<p>If you are seeing this from your cellphone, then you can access these sections from the left-side menu, 
+by clicking on the "hamburger" menu that is located in the top-left corner of the screen.</p>
+';
+
 // Cargar head común
 require_once HEAD_COMPONENT;
 ?>
 
 <body>
+  <header><?php include HELPER_COMPONENT; ?></header>
   <?php
   // Cargar navbar según el estado de autenticación
   if ($is_authenticated && isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'jugador') {
@@ -49,7 +64,11 @@ require_once HEAD_COMPONENT;
     // Usuario no logueado o no es jugador - mostrar navbar de guest
     require_once NAVBAR_GUEST_COMPONENT;
   }
+
+
   ?>
+
+
 
   <!-- Contenido principal -->
   <main class="container-fluid d-flex align-items-center justify-content-center main-content">

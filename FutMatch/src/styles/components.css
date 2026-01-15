@@ -19,6 +19,45 @@
   box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.4);
 }
 
+.btn-helper {
+  position: fixed; /* fijo a la ventana */
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px; /* tamaño */
+  height: 60px;
+  border-radius: 50%; /* círculo */
+  /* Gradient matching .text-gradient */
+  background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex; /* centra el contenido */
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.4);
+  animation: pulse-glow 2s;
+}
+
+.btn-helper:hover {
+  transform: scale(1.1);
+  color: white;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(13, 110, 253, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+  }
+}
+
 /* Botones de equipo con mejor contraste */
 .btn-team-primary {
   --bs-btn-bg: #0d6efd;
@@ -306,6 +345,50 @@ form {
 #successModal .modal-content {
   border-radius: 15px;
   padding: 20px;
+}
+
+/* Helper Modal Custom Animation */
+#helperModal .modal-dialog {
+  transform: scale(0.8) translate(50px, 50px);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0.3s ease;
+  transform-origin: bottom right;
+}
+
+#helperModal.show .modal-dialog {
+  transform: scale(1) translate(0, 0);
+  opacity: 1;
+}
+
+#helperModal .modal-content {
+  background: rgba(20, 20, 20, 0.95);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  border-radius: 24px;
+  color: #fff;
+}
+
+#helperModal .modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#helperModal .modal-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-lang {
+  background-image: none; /* quita la X */
+  opacity: 0.6;
+  font-weight: 600;
+  width: 2.5em;
+  height: 2.5em;
+}
+
+.btn-lang::after {
+  content: attr(id); /* usa ESP o ENG */
+  color: white;
 }
 
 /* ===================================

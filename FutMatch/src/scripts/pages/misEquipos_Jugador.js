@@ -462,6 +462,9 @@ function crearTarjetaEquipo(equipo) {
   if (esLider) {
     badgeRol =
       '<span class="badge bg-warning text-dark ms-2"><i class="bi bi-star-fill me-1"></i>Líder</span>';
+  } else if (parseInt(equipo.estado_solicitud) === 1) {
+    badgeRol =
+      '<span class="badge text-bg-secondary small ms-2">Invitación pendiente</span>';
   }
 
   // URL de la foto o placeholder
@@ -484,7 +487,7 @@ function crearTarjetaEquipo(equipo) {
 
             <!-- Información del equipo -->
             <div class="col-md-4">
-              <h5 class="card-title mb-1">
+              <h5 class="card-title nombre-equipo mb-1">
                 <a class="text-decoration-none">
                   ${equipo.nombre_equipo}
                 </a>
@@ -707,9 +710,38 @@ async function abrirModalInvitarJugadores(idEquipo) {
     jugadoresEquipoActual = [];
   }
 
-  const modalInvitar = new bootstrap.Modal(
-    document.getElementById("modalInvitarJugador")
+  // Verificar estado del usuario actual (movido al inicio para usarlo en todo el modal)
+  const usuarioActual = jugadoresEquipoActual.find(
+    (j) => parseInt(j.id_jugador) === parseInt(CURRENT_USER_ID)
   );
+  const estadoSolicitudUsuario = usuarioActual
+    ? parseInt(usuarioActual.estado_solicitud)
+    : 0; // 0 si no es miembro (ej: dueño viendo su equipo antes de unirse? aunque dueño es lider=3)
+
+  const modalInvitarEl = document.getElementById("modalInvitarJugador");
+  const modalInvitar = new bootstrap.Modal(modalInvitarEl);
+
+  // 1. Cambiar Título según estado
+  const modalTitle = modalInvitarEl.querySelector(".modal-title");
+  if (estadoSolicitudUsuario === 1 || estadoSolicitudUsuario === 2) {
+    modalTitle.textContent = "Ver miembros del equipo";
+  } else {
+    modalTitle.textContent = "Invitar jugadores al equipo";
+  }
+
+  // 2. Cambiar Footer según estado
+  const modalFooter = modalInvitarEl.querySelector(".modal-footer");
+  if (estadoSolicitudUsuario === 1 || estadoSolicitudUsuario === 2) {
+    modalFooter.innerHTML = `
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+    `;
+  } else {
+    // Restaurar botones originales si es necesario
+    modalFooter.innerHTML = `
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      <button type="button" class="btn btn-primary" id="btnConfirmarInvitaciones">Invitar</button>
+    `;
+  }
 
   // Resetear el contenedor
   const container = document.getElementById("invitarJugadoresSectionModal");
@@ -722,8 +754,6 @@ async function abrirModalInvitarJugadores(idEquipo) {
     seccionActuales.innerHTML = `
       <label class="form-label fw-bold">Miembros del equipo:</label>
       <div id="jugadoresActualesLista"></div>
-      <hr class="my-3">
-      <label class="form-label fw-bold">Gestionar jugadores:</label>
     `;
     container.appendChild(seccionActuales);
 
@@ -747,6 +777,7 @@ async function abrirModalInvitarJugadores(idEquipo) {
           estadoSolicitud === 1
             ? '<span class="badge bg-warning text-dark ms-2">Invitación pendiente</span>'
             : '<span class="badge bg-warning text-dark ms-2">En revisión</span>';
+
         descripcionEstado =
           '<small class="text-muted d-block fst-italic">Aún no acepta la invitación</small>';
       }
@@ -776,7 +807,9 @@ async function abrirModalInvitarJugadores(idEquipo) {
           ${badgeEstado}
         </div>
         ${
-          !jugador.es_lider
+          !jugador.es_lider &&
+          estadoSolicitudUsuario !== 1 &&
+          estadoSolicitudUsuario !== 2
             ? `
           <button class="btn btn-sm btn-outline-danger" onclick="confirmarEliminarJugador(${jugador.id_jugador}, '${jugador.username}', ${idEquipo})">
             <i class="bi bi-trash"></i>
@@ -795,31 +828,43 @@ async function abrirModalInvitarJugadores(idEquipo) {
   container.appendChild(seccionInvitar);
 
   // Mostrar botón para agregar el primer jugador
-  mostrarBotonInvitarModal();
+  mostrarBotonInvitarModal(estadoSolicitudUsuario);
 
   modalInvitar.show();
 
   // Configurar el botón de confirmar
   const btnConfirmar = document.getElementById("btnConfirmarInvitaciones");
-  btnConfirmar.onclick = confirmarInvitaciones;
+  if (btnConfirmar) {
+    btnConfirmar.onclick = confirmarInvitaciones;
+  }
 }
 
-function mostrarBotonInvitarModal() {
+function mostrarBotonInvitarModal(estadoSolicitud) {
   const container = document.getElementById("seccionInvitarNuevos");
+  console.log("Estado solicitud:", estadoSolicitud);
   if (!container) return;
 
+  if (estadoSolicitud === 1 || estadoSolicitud === 2) {
+    container.innerHTML = "";
+    return;
+  }
+
   container.innerHTML = `
+      <hr class="my-3">
+      <label class="form-label fw-bold">Gestionar jugadores:</label>
     <button type="button" class="btn btn-outline-primary w-100" id="btnInvitarJugadorModal">
       <i class="bi bi-person-plus"></i> Invitar jugador
     </button>
   `;
 
-  document
-    .getElementById("btnInvitarJugadorModal")
-    .addEventListener("click", function () {
-      this.remove();
-      agregarInputJugadorModal();
-    });
+  const btnInvitarJugadorModal = document.getElementById(
+    "btnInvitarJugadorModal"
+  );
+
+  btnInvitarJugadorModal.addEventListener("click", function () {
+    this.remove();
+    agregarInputJugadorModal();
+  });
 }
 
 function confirmarEliminarJugador(idJugador, username, idEquipo) {
