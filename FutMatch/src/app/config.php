@@ -14,8 +14,10 @@
 
 if ($_SERVER['SERVER_NAME'] === 'localhost') {
     $config = require __DIR__ . '/../../config.local.php';
+    $baseURL = "/Proyecto_Integrador_PW2025/FutMatch/";
 } else {
     $config = require __DIR__ . '/../../config.production.php';
+    $baseURL = "/FutMatch/";
 }
 
 try {
@@ -42,7 +44,7 @@ if (session_status() === PHP_SESSION_NONE) {
 // ===================================
 // RUTAS BASE
 // ===================================
-define("BASE_URL", "/Proyecto_Integrador_PW2025/FutMatch/"); // Ajusta según tu configuración de servidor
+define("BASE_URL", $baseURL); // Ajusta según tu configuración de servidor
 define("PUBLIC_PATH", BASE_URL . "public/");
 define("SRC_PATH", BASE_URL . "src/");
 
