@@ -16,6 +16,34 @@ $page_title = 'Mis Equipos - FutMatch';
 
 $page_css = [CSS_PAGES_EQUIPOS_JUGADOR];
 
+$helper_body_es = '
+<p>En esta sección se pueden gestionar los equipos que se han creado o a los que se han unido.</p>
+<p>Los equipos son grupos de otros jugadores con los que se pueden organizar partidos de manera rápida y cómoda.</p>
+<p>Además, se pueden utilizar para participar en TORNEOS. Es importante diferenciar al LÍDER del equipo, que tiene funciones adicionales.</p>
+<p>Resumen de funciones:
+<ul>
+    <li>Crear equipo.</li>
+    <li>Ver/Gestionar participantes de un equipo.</li>
+    <li>Invitar a otro integrante a un equipo (podés probar con el usuario juanpe)</li>
+    <li>Eliminar un integrante de un equipo.</li>
+    <li>Transferir liderazgo a otro integrante.</li>
+</ul>
+';
+
+$helper_body_en = '
+<p>In this section you can manage FOOTBALL TEAMS that you have created or joined.</p>
+<p>Teams are groups of other players with which you can organize matches quickly and comfortably.</p>
+<p>Additionally, they can be used to participate in TOURNAMENTS. It is important to differentiate the LEADER of the team, who has additional features.</p>
+<p>Summary of functions:
+<ul>
+    <li>Create team.</li>
+    <li>View/Manage participants of a team.</li>
+    <li>Invite another member to a team (you can try with the user juanpe)</li>
+    <li>Remove a member from a team.</li>
+    <li>Transfer leadership to another member.</li>
+</ul>
+';
+
 // Cargar head común
 require_once HEAD_COMPONENT;
 ?>

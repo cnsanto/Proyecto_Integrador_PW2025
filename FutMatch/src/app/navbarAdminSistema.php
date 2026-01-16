@@ -314,6 +314,12 @@ function isActive($page_name, $current)
     </div>
 </div>
 
+<?php
+if (isset($helper_body_en, $helper_body_es)) {
+    include HELPER_COMPONENT;
+}
+?>
+
 <script>
     const UPDATE_USUARIO_URL = '<?= UPDATE_USUARIO ?>';
 </script>

@@ -152,9 +152,8 @@ function renderizarTorneos(torneos) {
 function mostrarMensajeVacio(mensaje) {
   const contenedor = document.getElementById("torneosList");
   contenedor.innerHTML = `
-    <div class="col-12 text-center py-5">
-      <i class="bi bi-trophy" style="font-size: 4rem; color: #6c757d;"></i>
-      <p class="text-muted mt-3">${mensaje}</p>
+    <div class="alert alert-info">
+      <i class="bi bi-trophy me-2"></i>${mensaje}
     </div>
   `;
 }

@@ -13,6 +13,8 @@ require_once HEAD_COMPONENT;
 
 <body>
   <?php
+  $helper_body_es = "En esta sección puedes gestionar tus perfiles de cancha, ver los torneos asociados y configurar la disponibilidad.";
+  $helper_body_en = "In this section you can manage your field profiles, view associated tournaments and configure availability.";
   // Cargar navbar de admin cancha
   require_once NAVBAR_ADMIN_CANCHA_COMPONENT;
   ?>

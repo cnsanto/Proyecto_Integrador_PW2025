@@ -4,9 +4,10 @@ require_once __DIR__ . '/../../app/config.php';
 header("Content-Type: application/json");
 
 // Validar sesión
-$idAdminCancha = $_SESSION['user_id'] ?? null;
+$idAdminCancha = isset($_SESSION['user_id']) ? (int)$_SESSION['user_id'] : null;
 
 if (!$idAdminCancha) {
+    error_log("[get_torneos] Error: Usuario no autenticado");
     echo json_encode([
         "status" => "error",
         "message" => "Usuario no autenticado"
@@ -26,11 +27,11 @@ try {
             t.descripcion,
             t.fecha_inicio,
             t.fecha_fin,
-            t.fin_estimativo,
             t.id_etapa,
             t.max_equipos
         FROM torneos t
         WHERE t.id_organizador = :idAdminCancha
+          AND t.id_etapa NOT IN (1, 5)
         ORDER BY t.id_torneo DESC
     ";
 
@@ -94,9 +95,9 @@ try {
 
         // 2.5) Convertir etapa en estado textual
         $estado = "próximamente";
-        if ($torneo["id_etapa"] == 1) $estado = "inscripciones abiertas";
-        if ($torneo["id_etapa"] == 2) $estado = "en curso";
-        if ($torneo["id_etapa"] == 3) $estado = "finalizado";
+        if ($torneo["id_etapa"] == 2) $estado = "inscripciones abiertas";
+        if ($torneo["id_etapa"] == 3) $estado = "en curso";
+        if ($torneo["id_etapa"] == 4) $estado = "finalizado";
 
         // 2.6) Agregar datos al array final
         $respuesta[] = [
@@ -105,7 +106,6 @@ try {
             "descripcion"      => $torneo["descripcion"],
             "fecha_inicio"     => $torneo["fecha_inicio"],
             "fecha_fin"        => $torneo["fecha_fin"],
-            "fin_estimativo"   => $torneo["fin_estimativo"],
             "max_equipos"      => $torneo["max_equipos"],
             "equipos_inscriptos" => $totalEquipos,
             "cupos_disponibles" => $cuposDisponibles,
@@ -119,8 +119,8 @@ try {
         "status" => "success",
         "data" => $respuesta
     ], JSON_UNESCAPED_UNICODE);
-
 } catch (Exception $e) {
+    error_log("[get_torneos] Exception: " . $e->getMessage());
     echo json_encode([
         "status" => "error",
         "message" => $e->getMessage()

@@ -3,14 +3,14 @@ require_once __DIR__ . '/../../app/config.php';
 
 header("Content-Type: application/json; charset=utf-8");
 
-// Obtener el id_admin_cancha del parámetro GET
-$id_admin_cancha = isset($_GET['id_admin_cancha']) ? intval($_GET['id_admin_cancha']) : 0;
+// Obtener el id_admin_cancha del parámetro GET o de la sesión
+$id_admin_cancha = isset($_GET['id_admin_cancha']) ? intval($_GET['id_admin_cancha']) : ($_SESSION['user_id'] ?? 0);
 
 if (empty($id_admin_cancha)) {
     http_response_code(400);
     echo json_encode([
         'status' => 'error',
-        'message' => 'id_admin_cancha requerido'
+        'message' => 'id_admin_cancha requerido o sesión no iniciada'
     ], JSON_UNESCAPED_UNICODE);
     exit();
 }

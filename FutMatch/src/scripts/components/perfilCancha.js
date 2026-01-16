@@ -100,10 +100,10 @@ class PerfilCanchaBase {
       navigator.clipboard
         .writeText(window.location.href)
         .then(() => {
-          this.showToast("¡URL copiada al portapapeles!", "success");
+          showToast("¡URL copiada al portapapeles!", "success");
         })
         .catch(() => {
-          this.showToast("No se pudo copiar la URL", "error");
+          showToast("No se pudo copiar la URL", "error");
         });
     }
   }
@@ -118,8 +118,6 @@ class PerfilCanchaBase {
         direccion
       )}`;
       window.open(urlMaps, "_blank");
-    } else {
-      this.mostrarNotifshowToasticacion("No se encontró la dirección", "error");
     }
   }
 
@@ -134,19 +132,6 @@ class PerfilCanchaBase {
       urlParams.get("id_cancha") ||
       (this.datosCancha ? this.datosCancha.id_cancha : null) ||
       (typeof ID_CANCHA !== "undefined" ? ID_CANCHA : null);
-
-    if (idCancha) {
-      // Verificar si PAGE_CALENDARIO_CANCHA_JUGADOR está definida
-      if (typeof PAGE_CALENDARIO_CANCHA_JUGADOR !== "undefined") {
-        window.location.href = `${PAGE_CALENDARIO_CANCHA_JUGADOR}?id=${idCancha}`;
-      } else {
-        console.error("PAGE_CALENDARIO_CANCHA_JUGADOR no está definida");
-        this.showToast("Error: No se pudo cargar el calendario", "error");
-      }
-    } else {
-      console.error("No se encontró ID de cancha para redirigir al calendario");
-      this.showToast("Error: No se pudo identificar la cancha", "error");
-    }
   }
 
   /**
@@ -155,7 +140,7 @@ class PerfilCanchaBase {
   verResenas() {
     // TODO: Implementar modal o página de reseñas
     console.log("Mostrar reseñas de la cancha");
-    this.showToast("Función de reseñas en desarrollo", "info");
+    showToast("Función de reseñas en desarrollo", "info");
   }
 
   /**
@@ -165,7 +150,7 @@ class PerfilCanchaBase {
   verDetallesTorneo(torneoId) {
     console.log(`Ver detalles del torneo ${torneoId}`);
     // TODO: Redirigir a página de detalles del torneo o abrir modal
-    this.showToast("Redirigiendo a detalles del torneo...", "info");
+    showToast("Redirigiendo a detalles del torneo...", "info");
   }
 
   /**
@@ -203,43 +188,8 @@ class PerfilCanchaBase {
    * @param {string} nombreCancha - Nombre de la cancha a cargar
    */
   cargarDatosCancha(nombreCancha) {
-    console.log(`Cargando datos de: ${nombreCancha}`);
-
     // Actualizar información en la página
     document.getElementById("nombreCancha").textContent = nombreCancha;
-
-    // TODO: Hacer petición AJAX para cargar datos reales de la cancha
-    this.showToast("Cancha cambiada a: ${nombreCancha}", "success");
-  }
-
-  /**
-   * Mostrar notificación temporal
-   * @param {string} mensaje - Mensaje a mostrar
-   * @param {string} tipo - Tipo de notificación (success, error, info, warning)
-   */
-  showToast(mensaje, tipo = "info") {
-    // Crear elemento de notificación
-    const notificacion = document.createElement("div");
-    notificacion.className = `alert alert-${
-      tipo === "error" ? "danger" : tipo
-    } alert-dismissible fade show position-fixed`;
-    notificacion.style.cssText =
-      "top: 20px; right: 20px; z-index: 9999; min-width: 300px;";
-
-    notificacion.innerHTML = `
-            ${mensaje}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        `;
-
-    // Agregar al body
-    document.body.appendChild(notificacion);
-
-    // Auto-remover después de 3 segundos
-    setTimeout(() => {
-      if (notificacion.parentNode) {
-        notificacion.remove();
-      }
-    }, 3000);
   }
 
   /**

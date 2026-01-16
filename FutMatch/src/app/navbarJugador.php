@@ -98,11 +98,11 @@ function isActive($page_name, $current)
 			<div class="d-flex align-items-center">
 				<!-- Botón Mi Perfil -->
 				<a href="<?= PAGE_MI_PERFIL_JUGADOR ?>"
-					class="btn btn-dark me-2 d-none d-md-flex <?= isActive('miPerfil', $current_page) ?>"
+					class="btn btn-dark me-2 d-none <?= isActive('miPerfil', $current_page) ?>"
 					id="botonMiPerfil"
 					title="Mi Perfil">
 					<i class="bi bi-person-circle"></i>
-					<span class="d-none d-lg-inline ms-1">Mi Perfil</span>
+					<span class="d-none ms-1">Mi Perfil</span>
 				</a>
 				<!-- Campanita de notificaciones -->
 				<button class="btn btn-dark position-relative me-2"
@@ -177,7 +177,7 @@ function isActive($page_name, $current)
 		<div class="mt-auto pt-3 border-top">
 			<div class="d-grid gap-2">
 				<a href="<?= PAGE_MI_PERFIL_JUGADOR ?>"
-					class="btn btn-dark text-start <?= isActive('miPerfil', $current_page) ?>"
+					class="btn btn-dark text-start d-none <?= isActive('miPerfil', $current_page) ?>"
 					title="Mi Perfil">
 					<i class="bi bi-person-circle me-2"></i>Mi Perfil
 				</a>
@@ -681,6 +681,12 @@ function isActive($page_name, $current)
 		</div>
 	</div>
 </div>
+
+<?php
+if (isset($helper_body_en, $helper_body_es)) {
+	include HELPER_COMPONENT;
+}
+?>
 
 
 <script>

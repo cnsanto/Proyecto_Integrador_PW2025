@@ -135,5 +135,10 @@ function isActive($page_name, $current)
     </div>
 </div>
 
+<?php
+if (isset($helper_body_en, $helper_body_es)) {
+    include HELPER_COMPONENT;
+}
+?>
 
 <script src="<?= JS_HELPER ?>"></script>

@@ -1,4 +1,3 @@
-
 console.log("mis_torneos.js cargó");
 
 // VARIABLES
@@ -8,7 +7,7 @@ let TIPOS_PARTIDO_CACHE = [];
 let CANCHAS_CACHE = {};
 let ID_CANCHA_ACTUAL = null; // Variable para almacenar el ID de la cancha visible actualmente
 
-// FUNCIÓN SELECTORES 
+// FUNCIÓN SELECTORES
 // ===================
 const cargarSelectores = () => {
   // Usamos Promise.all para asegurarnos de que ambas llamadas fetch terminen
@@ -158,7 +157,7 @@ document
           );
           showToast(
             "Error al actualizar la cancha: " +
-            (res.message || "Error desconocido"),
+              (res.message || "Error desconocido"),
             "error"
           ); // Mensaje de error
         }
@@ -169,7 +168,7 @@ document
       });
   });
 
-// DOCUMENT READY / CARGA INICIAL 
+// DOCUMENT READY / CARGA INICIAL
 // ==============================
 
 const cargarCanchas = () => {
@@ -461,7 +460,6 @@ async function actualizarBanner(id) {
 
       const btnMapa = document.getElementById("btnVerEnMapa");
       if (btnMapa && cancha.latitud && cancha.longitud) {
-
         const mapUrl = `https://www.google.com/maps/search/?api=1&query=${cancha.latitud},${cancha.longitud}`;
         btnMapa.onclick = () => window.open(mapUrl, "_blank");
       }
@@ -565,23 +563,25 @@ document.addEventListener("DOMContentLoaded", function () {
 // SECCION TORNEOS
 // ================
 
-
 function cargarListaTorneos() {
   fetch(BASE_URL + "src/controllers/torneos/get_torneos.php")
-    .then(res => res.json())
-    .then(data => {
-
+    .then((res) => res.json())
+    .then((data) => {
       document.getElementById("loaderTorneos").style.display = "none";
 
       if (data.status !== "success") {
-        mostrarToast("Error al cargar torneos", "danger");
+        mostrarToast(data.message || "Error al cargar torneos", "danger");
         return;
       }
 
       renderizarTorneos(data.data);
     })
-    .catch(e => {
-      mostrarToast("Error de conexión al cargar torneos", "danger");
+    .catch((e) => {
+      console.error("Error en cargarListaTorneos:", e);
+      mostrarToast(
+        "Error de conexión al cargar torneos: " + e.message,
+        "danger"
+      );
     });
 }
 
@@ -595,11 +595,10 @@ function renderizarTorneos(lista) {
     return;
   }
 
-  cont.innerHTML = lista.map(t => generarTarjetaTorneo(t)).join("");
+  cont.innerHTML = lista.map((t) => generarTarjetaTorneo(t)).join("");
 }
 
 function generarTarjetaTorneo(t) {
-
   const colores = ["bg-warning", "bg-info", "bg-success"];
   const color = colores[t.id_torneo % 3];
 
@@ -634,9 +633,9 @@ function generarTarjetaTorneo(t) {
 
       <p class="mb-3">${t.descripcion}</p>
 
-      <div class="d-flex justify-content-start align-items-center">
-        <a href="PAGE_MIS_PERFILES_ADMIN_CANCHA" class="btn btn-sm btn-dark">Ver Detalles</a>
-      </div>
+      <button class="btn btn-dark btn-sm" onclick="showToast('Funcionalidad en desarrollo','info')">
+            <i class="bi bi-eye"></i> Ver detalles
+      </button>
 
     </div>
   `;
@@ -644,96 +643,99 @@ function generarTarjetaTorneo(t) {
 
 function mostrarToast(msg, tipo = "dark") {
   const toastEl = document.getElementById("toastGeneral");
-  toastEl.classList.remove("bg-dark", "bg-danger", "bg-success", "bg-info", "bg-warning");
+  toastEl.classList.remove(
+    "bg-dark",
+    "bg-danger",
+    "bg-success",
+    "bg-info",
+    "bg-warning"
+  );
   toastEl.classList.add("bg-" + tipo);
   toastEl.querySelector(".toast-body").innerText = msg;
 
   new bootstrap.Toast(toastEl).show();
 }
 
-
-
 // MODAL CAMBIAR IMAGEN
 // =====================
 
 function abrirModalCambiarImagen() {
-    if (!ID_CANCHA_ACTUAL) {
-        showToast("No hay cancha seleccionada", "error");
-        return;
-    }
+  if (!ID_CANCHA_ACTUAL) {
+    showToast("No hay cancha seleccionada", "error");
+    return;
+  }
 
-    // Guardar ID en modal
-    document.getElementById("imgCanchaId").value = ID_CANCHA_ACTUAL;
+  // Guardar ID en modal
+  document.getElementById("imgCanchaId").value = ID_CANCHA_ACTUAL;
 
-    // Mostrar imagen actual
-    const cancha = CANCHAS_CACHE[ID_CANCHA_ACTUAL];
-    const preview = document.getElementById("bannerCancha");
-    preview.src = cancha.banner;
+  // Mostrar imagen actual
+  const cancha = CANCHAS_CACHE[ID_CANCHA_ACTUAL];
+  const preview = document.getElementById("bannerCancha");
+  preview.src = cancha.banner;
 
-    // Limpiar input
-    document.getElementById("inputNuevaImagen").value = "";
+  // Limpiar input
+  document.getElementById("inputNuevaImagen").value = "";
 
-    const modal = new bootstrap.Modal(
-        document.getElementById("modalCambiarImagen")
-    );
-    modal.show();
+  const modal = new bootstrap.Modal(
+    document.getElementById("modalCambiarImagen")
+  );
+  modal.show();
 }
 
 // Vista previa de la nueva imagen
-document.getElementById("inputNuevaImagen").addEventListener("change", function () {
+document
+  .getElementById("inputNuevaImagen")
+  .addEventListener("change", function () {
     const file = this.files[0];
     if (!file) return;
 
     const reader = new FileReader();
     reader.onload = (e) => {
-        document.getElementById("previewNuevaImagen").src = e.target.result;
+      document.getElementById("previewNuevaImagen").src = e.target.result;
     };
     reader.readAsDataURL(file);
-});
+  });
 
 // SUBIR IMAGEN
 document.getElementById("btnSubirImagen").addEventListener("click", () => {
-    const id = document.getElementById("imgCanchaId").value;
-    const archivo = document.getElementById("inputNuevaImagen").files[0];
+  const id = document.getElementById("imgCanchaId").value;
+  const archivo = document.getElementById("inputNuevaImagen").files[0];
 
+  console.log("ID A ENVIAR:", id);
+  console.log("ARCHIVO A ENVIAR:", archivo);
 
-console.log("ID A ENVIAR:", id);
-console.log("ARCHIVO A ENVIAR:", archivo);
+  if (!archivo) {
+    showToast("Seleccione una imagen primero", "error");
+    return;
+  }
 
-    if (!archivo) {
-        showToast("Seleccione una imagen primero", "error");
-        return;
-    }
+  let data = new FormData();
+  data.append("id_cancha", id);
+  data.append("banner", archivo);
 
-    let data = new FormData();
-    data.append("id_cancha", id);
-    data.append("banner", archivo);
+  fetch(BASE_URL + "src/controllers/admin-cancha/subir_banner.php", {
+    method: "POST",
+    body: data,
+  })
+    .then((r) => r.json())
+    .then((resp) => {
+      if (resp.status === "success") {
+        // Cerrar modal
+        const modal = bootstrap.Modal.getInstance(
+          document.getElementById("modalCambiarImagen")
+        );
+        modal.hide();
 
+        showToast("Imagen actualizada correctamente", "success");
 
-    fetch(BASE_URL + "src/controllers/admin-cancha/subir_banner.php", {
-        method: "POST",
-        body: data
+        // Actualizar banner al instante
+        actualizarBanner(id);
+      } else {
+        showToast(resp.message || "Error al subir imagen", "error");
+      }
     })
-        .then(r => r.json())
-        .then(resp => {
-            if (resp.status === "success") {
-
-                // Cerrar modal
-                const modal = bootstrap.Modal.getInstance(
-                    document.getElementById("modalCambiarImagen")
-                );
-                modal.hide();
-
-                showToast("Imagen actualizada correctamente", "success");
-
-                // Actualizar banner al instante
-                actualizarBanner(id);
-            } else {
-                showToast(resp.message || "Error al subir imagen", "error");
-            }
-        })
-        .catch(err => {
-            console.error("Error:", err);
-            showToast("Error de conexión al subir imagen", "error");
-        });
+    .catch((err) => {
+      console.error("Error:", err);
+      showToast("Error de conexión al subir imagen", "error");
+    });
 });
