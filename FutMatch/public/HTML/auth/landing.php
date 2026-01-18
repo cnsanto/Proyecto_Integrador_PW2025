@@ -79,15 +79,15 @@ $helper_body_en = '
 <div class="mb-3"> 
 <p>You are currently on the landing page. Here you can:</p>
 <ul>
-    <li class="mb-3">Enter as a guest (left button): you can browse available fields and matches, but you cannot make reservations or request to join.</li>
+    <li class="mb-3">Enter as a guest: you can browse available fields and matches, but you cannot make reservations or request to join.</li>
     <li class="mb-3">
-    <p> Log in or register as a player (right button): you can do it right away.</p>
+    <p>Log in or register as a player: you can do it right away.</p>
     <button type="button" class="btn btn-secondary login-jugador">Log in as example player</button>
     <p class="text-muted">This is a demo account. The data will be deleted in a short-term period.</p>
     </li>
     <li class="mb-3">
-    <p>Log in or register as a field administrator (link at the bottom): this requires a few extra steps.</p>
-    <button type="button" class="btn btn-secondary login-admin-cancha">Log in as example administrator</button>
+    <p>Log in or register as a field administrator: this requires a few extra steps.</p>
+    <button type="button" class="btn btn-secondary login-admin">Log in as example field administrator</button>
     <p class="text-muted">This is a demo account. The data will be deleted in a short-term period.</p>
     </li>
     <li class="mb-3">Log in as a FutMatch administrator (no special button, only with the right credentials).
@@ -102,6 +102,11 @@ $helper_body_en = '
 ?>
 
 <body>
+
+    <script>
+        // Set global variable for demo login URL (needed by landing.js)
+        window.DEMO_LOGIN_URL = '<?= CONTROLLER_DEMO_LOGIN ?>';
+    </script>
     <header class="hero bg-image" style="background-image: url('<?= IMG_LANDING ?>');">
         <?php include HELPER_COMPONENT; ?>
         <div class="hero-overlay"></div>
@@ -208,6 +213,7 @@ $helper_body_en = '
 
     <!-- Scripts -->
     <script src="<?= JS_BOOTSTRAP ?>"></script>
+    <script src="<?= JS_TOAST_MODULE ?>"></script>
     <script src="<?= JS_LANDING ?>"></script>
     <script src="<?= JS_HELPER ?>"></script>
 

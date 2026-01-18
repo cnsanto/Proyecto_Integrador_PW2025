@@ -204,6 +204,7 @@ define("GET_RESEÑAS_JUGADORES", BASE_URL . "src/controllers/getReseñas_Jugador
 define("GET_USUARIOS", BASE_URL . "src/controllers/getUsuarios.php");
 define("CONTROLLER_LOGIN", BASE_URL . "src/controllers/login_controller.php");
 define("CONTROLLER_LOGOUT", BASE_URL . "src/controllers/logout.php");
+define("CONTROLLER_DEMO_LOGIN", BASE_URL . "src/controllers/demo_login_controller.php");
 define("POST_EQUIPO_JUGADOR", BASE_URL . "src/controllers/postEquipo_Jugador.php");
 define("POST_FOTOS_JUGADOR", BASE_URL . "src/controllers/postFotos_Jugador.php");
 define("POST_INVITAR_JUGADOR", BASE_URL . "src/controllers/postInvitarJugador_Equipo.php");

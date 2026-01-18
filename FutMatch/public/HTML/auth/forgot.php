@@ -52,8 +52,7 @@ include HEAD_COMPONENT;
                     id="inputEmail"
                     name="email"
                     placeholder="tu@email.com"
-                    required
-                  />
+                    required />
                   <div class="invalid-feedback">Ingresá un email válido.</div>
                 </div>
 
@@ -78,8 +77,9 @@ include HEAD_COMPONENT;
     </div>
   </header>
 
-    <!-- Scripts -->
-    <script src="<?= JS_BOOTSTRAP ?>"></script>
-    <script src="<?= JS_FORGOT ?>"></script>
+  <!-- Scripts -->
+  <script src="<?= JS_BOOTSTRAP ?>"></script>
+  <script src="<?= JS_FORGOT ?>"></script>
 </body>
+
 </html>

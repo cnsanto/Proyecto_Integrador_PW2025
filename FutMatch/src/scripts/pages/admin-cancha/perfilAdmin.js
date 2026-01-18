@@ -570,7 +570,7 @@ function cargarListaTorneos() {
       document.getElementById("loaderTorneos").style.display = "none";
 
       if (data.status !== "success") {
-        mostrarToast(data.message || "Error al cargar torneos", "danger");
+        showToast(data.message || "Error al cargar torneos", "danger");
         return;
       }
 
@@ -578,10 +578,7 @@ function cargarListaTorneos() {
     })
     .catch((e) => {
       console.error("Error en cargarListaTorneos:", e);
-      mostrarToast(
-        "Error de conexión al cargar torneos: " + e.message,
-        "danger"
-      );
+      showToast("Error de conexión al cargar torneos: " + e.message, "danger");
     });
 }
 
@@ -639,21 +636,6 @@ function generarTarjetaTorneo(t) {
 
     </div>
   `;
-}
-
-function mostrarToast(msg, tipo = "dark") {
-  const toastEl = document.getElementById("toastGeneral");
-  toastEl.classList.remove(
-    "bg-dark",
-    "bg-danger",
-    "bg-success",
-    "bg-info",
-    "bg-warning"
-  );
-  toastEl.classList.add("bg-" + tipo);
-  toastEl.querySelector(".toast-body").innerText = msg;
-
-  new bootstrap.Toast(toastEl).show();
 }
 
 // MODAL CAMBIAR IMAGEN

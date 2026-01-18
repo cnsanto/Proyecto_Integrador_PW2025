@@ -464,16 +464,16 @@ function agregarCancha() {
           .classList.add("d-none");
         cargarCanchas();
 
-        mostrarToast("Cancha agregada correctamente", "success");
+        showToast("Cancha agregada correctamente", "success");
       } else {
-        mostrarToast("Error: " + data.message, "error");
+        showToast("Error: " + data.message, "error");
         console.error(data);
       }
     })
     .catch((err) => {
       console.error("Error fetch agregar cancha:", err);
 
-      mostrarToast("Error al comunicarse con el servidor", "error");
+      showToast("Error al comunicarse con el servidor", "error");
     });
 }
 // ==========================
@@ -825,36 +825,3 @@ document
   .addEventListener("show.bs.modal", () => {
     cargarHistorialDesdeCache();
   });
-
-// --- Sistema de Toasts ---
-function mostrarToast(mensaje, tipo = "success") {
-  const toastContainer = document.getElementById("toastContainer");
-
-  const colores = {
-    success: "bg-success text-white",
-    error: "bg-danger text-white",
-    warning: "bg-warning text-dark",
-    info: "bg-info text-dark",
-  };
-
-  const toast = document.createElement("div");
-  toast.className = `toast align-items-center ${colores[tipo]} border-0`;
-  toast.role = "alert";
-  toast.innerHTML = `
-        <div class="d-flex">
-            <div class="toast-body">
-                ${mensaje}
-            </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-        </div>
-    `;
-
-  toastContainer.appendChild(toast);
-
-  const bsToast = new bootstrap.Toast(toast, { delay: 3500 });
-  bsToast.show();
-
-  toast.addEventListener("hidden.bs.toast", () => {
-    toast.remove();
-  });
-}

@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         // Buscar usuario por email
-        $query = "SELECT * FROM " . TABLE_USUARIOS . " WHERE email = :email AND id_estado = 1";
+        $query = "SELECT * FROM usuarios WHERE email = :email AND id_estado = 1";
         error_log("[LOGIN] Query: " . $query);
         $stmt = $conn->prepare($query);
         $stmt->execute(['email' => $email]);
@@ -82,6 +82,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $_SESSION['nombre'] = $usuario['nombre'];
             $_SESSION['apellido'] = $usuario['apellido'] ?? '';
+
+            // Set demo mode if applicable
+            if (isset($usuario['tipo_demo']) && $usuario['tipo_demo'] !== 'none') {
+                $_SESSION['is_demo'] = $usuario['tipo_demo'];
+                error_log("[LOGIN] Usuario es demo mode: " . $usuario['tipo_demo']);
+            }
 
             error_log("[LOGIN] Sesión establecida para: " . $_SESSION['nombre'] . " (" . $_SESSION['user_type'] . ")");
 
