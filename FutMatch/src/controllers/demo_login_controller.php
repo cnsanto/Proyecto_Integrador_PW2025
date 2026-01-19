@@ -177,9 +177,7 @@ function loginDynamicDemo($role, $conn)
             $queryParticipantes = "INSERT INTO jugadores_equipos
                                     (id_jugador, id_equipo, estado_solicitud, invitado_por)
                                     VALUES
-                                    (:user_id, :id_equipo, 3, NULL),
-                                    (:user_id, 25, 1, 36),
-                                    (:user_id, 2, 3, 3)";
+                                    (:user_id, :id_equipo, 3, NULL)";
             try {
                 $stmtParticipantes = $conn->prepare($queryParticipantes);
                 $stmtParticipantes->execute([
