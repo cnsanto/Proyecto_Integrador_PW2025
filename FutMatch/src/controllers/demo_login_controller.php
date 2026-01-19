@@ -59,20 +59,23 @@ function loginDynamicDemo($role, $conn)
 
     // Find next available demo number
     $prefix = "demo_{$role}_";
-    $query = "SELECT j.username 
-              FROM jugadores j 
-              WHERE j.username LIKE :pattern 
-              ORDER BY j.id_jugador DESC LIMIT 1";
+
+    // Check usuarios table by email to find the highest number
+    // This works for ALL roles (jugador, admin_cancha, admin_sistema)
+    $query = "SELECT email
+              FROM usuarios
+              WHERE email LIKE :pattern 
+              ORDER BY id_usuario DESC LIMIT 1";
     $stmt = $conn->prepare($query);
     $stmt->execute(['pattern' => $prefix . '%@demo.com']);
     $lastUser = $stmt->fetch();
 
-    error_log("[DEMO_LOGIN] Last user query result: " . ($lastUser ? $lastUser['username'] : 'none'));
+    error_log("[DEMO_LOGIN] Last user query result: " . ($lastUser ? $lastUser['email'] : 'none'));
 
     $nextNumber = 1;
     if ($lastUser) {
-        // Extract number from last username
-        preg_match('/demo_' . $role . '_(\d+)/', $lastUser['username'], $matches);
+        // Extract number from email: demo_jugador_123@demo.com -> 123
+        preg_match('/' . preg_quote($prefix, '/') . '(\d+)@/', $lastUser['email'], $matches);
         if (isset($matches[1])) {
             $nextNumber = (int)$matches[1] + 1;
         }
@@ -174,9 +177,9 @@ function loginDynamicDemo($role, $conn)
             $queryParticipantes = "INSERT INTO jugadores_equipos
                                     (id_jugador, id_equipo, estado_solicitud, invitado_por)
                                     VALUES
-                                    (:user_id, :id_equipo, 3),
+                                    (:user_id, :id_equipo, 3, NULL),
                                     (:user_id, 25, 1, 36),
-                                    (:user_id, 2, 3, 3);";
+                                    (:user_id, 2, 3, 3)";
             try {
                 $stmtParticipantes = $conn->prepare($queryParticipantes);
                 $stmtParticipantes->execute([
