@@ -158,6 +158,44 @@ function loginDynamicDemo($role, $conn)
         }
     }
 
+    // AGREGAR EQUIPOS
+    if ($role === 'jugador') {
+        error_log("[DEMO_LOGIN] Creating equipo profile...");
+        $queryEquipo = "INSERT INTO equipos
+                        (id_lider, nombre, foto, abierto, descripcion, creado_por)
+                        VALUES (:user_id, 'HUDSON FC', 'uploads/equipos/equipo_1768451742_69686e9e0b18f.png', 1, 'Football Amateur', :user_id)";
+        try {
+            $stmtEquipo = $conn->prepare($queryEquipo);
+            $stmtEquipo->execute([
+                'user_id' => $userId
+            ]);
+            error_log("[DEMO_LOGIN] Equipo profile created");
+            $equipoId = $conn->lastInsertId();
+            $queryParticipantes = "INSERT INTO jugadores_equipos
+                                    (id_jugador, id_equipo, estado_solicitud, invitado_por)
+                                    VALUES
+                                    (:user_id, :id_equipo, 3),
+                                    (:user_id, 25, 1, 36),
+                                    (:user_id, 2, 3, 3);";
+            try {
+                $stmtParticipantes = $conn->prepare($queryParticipantes);
+                $stmtParticipantes->execute([
+                    'user_id' => $userId,
+                    'id_equipo' => $equipoId
+                ]);
+                error_log("[DEMO_LOGIN] Jugador added to equipo");
+            } catch (PDOException $e) {
+                error_log("[DEMO_LOGIN] Failed to add jugador to equipo: " . $e->getMessage());
+                throw $e;
+            }
+        } catch (PDOException $e) {
+            error_log("[DEMO_LOGIN] Failed to create equipo profile: " . $e->getMessage());
+            throw $e;
+        }
+    }
+
+
+
     // Set session
     error_log("[DEMO_LOGIN] Setting up session...");
     $_SESSION['user_id'] = $userId;
