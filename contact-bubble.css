@@ -1,0 +1,173 @@
+/* ===================================
+   CONTACT BUBBLE - Floating Contact Menu
+   Similar design to helper button
+   =================================== */
+
+.contact-bubble-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9998;
+}
+
+/* Main button */
+.btn-contact-bubble {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-contact-bubble:hover {
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+.btn-contact-bubble.active {
+  transform: rotate(45deg);
+  background: linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%);
+}
+
+/* Contact menu items */
+.contact-bubble-menu {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.contact-item {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  opacity: 0;
+  transform: scale(0) translateY(0);
+  pointer-events: none;
+  bottom: 5px;
+  right: 5px;
+}
+
+/* Show menu items when active */
+.contact-bubble-container.active .contact-item {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* Radial fan positioning */
+.contact-bubble-container.active .contact-whatsapp {
+  transform: scale(1) translate(-80px, 0);
+  transition-delay: 0.05s;
+}
+
+.contact-bubble-container.active .contact-linkedin {
+  transform: scale(1) translate(-65px, -55px);
+  transition-delay: 0.1s;
+}
+
+.contact-bubble-container.active .contact-github {
+  transform: scale(1) translate(-15px, -75px);
+  transition-delay: 0.15s;
+}
+
+.contact-bubble-container.active .contact-email {
+  transform: scale(1) translate(35px, -65px);
+  transition-delay: 0.2s;
+}
+
+/* Specific colors for each contact type */
+.contact-whatsapp {
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+}
+
+.contact-linkedin {
+  background: linear-gradient(135deg, #0077b5 0%, #004471 100%);
+}
+
+.contact-github {
+  background: linear-gradient(135deg, #333 0%, #181717 100%);
+}
+
+.contact-email {
+  background: linear-gradient(135deg, #ea4335 0%, #c5221f 100%);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .contact-bubble-container {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .btn-contact-bubble {
+    width: 55px;
+    height: 55px;
+    font-size: 22px;
+  }
+
+  .contact-item {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+
+  /* Adjust positions for smaller screens */
+  .contact-bubble-container.active .contact-whatsapp {
+    transform: scale(1) translate(-70px, 0);
+  }
+
+  .contact-bubble-container.active .contact-linkedin {
+    transform: scale(1) translate(-55px, -50px);
+  }
+
+  .contact-bubble-container.active .contact-github {
+    transform: scale(1) translate(-10px, -65px);
+  }
+
+  .contact-bubble-container.active .contact-email {
+    transform: scale(1) translate(30px, -55px);
+  }
+}
+
+/* Animation for initial load */
+@keyframes bubble-entrance {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(20deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+.btn-contact-bubble {
+  animation: bubble-entrance 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+    forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
