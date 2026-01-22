@@ -80,7 +80,7 @@ $cv = [
         'junior' => [
             'puesto' => 'Desarrolladora Junior | Full-Stack',
             'empresa' => 'ANSES',
-            'periodo' => 'Junio 2026 - Actualidad',
+            'periodo' => 'Junio 2025 - Actualidad',
             'tareas' => [
                 'Documentación y planificación de sistemas.',
                 'QA y análisis de incidencias.',
@@ -168,7 +168,7 @@ $cv = [
         'junior' => [
             'puesto' => 'Junior Developer | Full-Stack',
             'empresa' => 'ANSES',
-            'periodo' => 'June 2026 - Now',
+            'periodo' => 'June 2025 - Now',
             'tareas' => [
                 'System documentation and planning.',
                 'QA and issue analysis.',
@@ -217,6 +217,7 @@ $data = $cv[$idioma];
 
     <!-- CSS Proyectos -->
     <link rel="stylesheet" href="index.css?v=<?= time() ?>" />
+    <link rel="stylesheet" href="contact-bubble.css?v=<?= time() ?>" />
 </head>
 
 <body>
@@ -410,6 +411,27 @@ $data = $cv[$idioma];
             </div>
         </div>
     </section>
+
+    <!-- Floating Contact Bubble -->
+    <div class="contact-bubble-container">
+        <button id="contactBubbleBtn" class="btn-contact-bubble" aria-label="Contact Menu">
+            <i class="bi bi-chat-dots"></i>
+        </button>
+        <div class="contact-bubble-menu">
+            <a href="https://wa.link/hzrlh7" target="_blank" class="contact-item contact-whatsapp" title="WhatsApp">
+                <i class="bi bi-whatsapp"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/camila-natalia-santo/" target="_blank" class="contact-item contact-linkedin" title="LinkedIn">
+                <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="https://github.com/cnsanto" target="_blank" class="contact-item contact-github" title="GitHub">
+                <i class="bi bi-github"></i>
+            </a>
+            <a href="javascript:void(0);" class="contact-item contact-email copy-email-btn" data-email="cnsanto@gmail.com" title="Email">
+                <i class="bi bi-envelope-fill"></i>
+            </a>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>

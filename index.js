@@ -87,4 +87,32 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  // --- Contact Bubble Toggle Logic ---
+  const contactBubbleBtn = document.getElementById("contactBubbleBtn");
+  const contactContainer = document.querySelector(".contact-bubble-container");
+
+  if (contactBubbleBtn && contactContainer) {
+    contactBubbleBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      contactContainer.classList.toggle("active");
+      contactBubbleBtn.classList.toggle("active");
+    });
+
+    // Close contact bubble when clicking outside
+    document.addEventListener("click", function (e) {
+      if (!contactContainer.contains(e.target)) {
+        contactContainer.classList.remove("active");
+        contactBubbleBtn.classList.remove("active");
+      }
+    });
+
+    // Close on ESC key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && contactContainer.classList.contains("active")) {
+        contactContainer.classList.remove("active");
+        contactBubbleBtn.classList.remove("active");
+      }
+    });
+  }
 });
