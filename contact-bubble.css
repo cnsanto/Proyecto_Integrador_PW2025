@@ -47,6 +47,11 @@
   pointer-events: none;
 }
 
+/* Enable pointer events when container is active */
+.contact-bubble-container.active .contact-bubble-menu {
+  pointer-events: auto;
+}
+
 .contact-item {
   position: absolute;
   width: 50px;
