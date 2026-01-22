@@ -1,4 +1,5 @@
 <?php
+
 /**
  * HEAD.PHP - Template del head para todas las páginas
  * Incluye DOCTYPE, HTML tag con dark mode, Bootstrap, iconos, fuentes y CSS unificados
@@ -12,6 +13,7 @@ if (!defined('BASE_URL')) {
 ?>
 <!DOCTYPE html>
 <html lang="es" data-bs-theme="dark">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -47,4 +49,21 @@ if (!defined('BASE_URL')) {
 
   <!-- Título de la página -->
   <title><?= htmlspecialchars($page_title ?? "FutMatch") ?></title>
+
+  <!-- Auto-include footer script
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Only add footer if we're in a FutMatch page (not index.php)
+      if (window.location.pathname.includes('FutMatch')) {
+        fetch('<?= BASE_URL ?>src/app/footer.php')
+          .then(response => response.text())
+          .then(html => {
+            const footer = document.createElement('div');
+            footer.innerHTML = html;
+            document.body.appendChild(footer.firstElementChild);
+          })
+          .catch(error => console.log('Footer not loaded:', error));
+      }
+    });
+  </script> -->
 </head>

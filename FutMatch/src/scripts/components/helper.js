@@ -1,34 +1,48 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const helperButton = document.getElementById("helperBtn");
   const helperModal = document.getElementById("helperModal");
-  helperModal.addEventListener("shown.bs.modal", () => {
-    helperModal.focus();
-  });
   const body = document.getElementById("helperBody");
   const buttons = document.querySelectorAll(".btn-lang");
 
+  // Load saved language preference from localStorage
+  const savedLang = localStorage.getItem("helper_lang") || "esp";
+  updateModalContent(savedLang);
+
+  // Focus modal when shown
+  helperModal.addEventListener("shown.bs.modal", () => {
+    helperModal.focus();
+  });
+
+  // Language switcher buttons
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const lang = btn.dataset.lang; // "ESP" o "ENG"
-
-      if (lang === "ESP") {
-        body.innerHTML = body.dataset.es;
-      } else {
-        body.innerHTML = body.dataset.en;
-      }
+      const lang = btn.dataset.lang.toLowerCase(); // "esp" or "eng"
+      updateModalContent(lang);
+      localStorage.setItem("helper_lang", lang);
     });
   });
 
-  document.querySelectorAll(".btn-lang").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const lang = btn.dataset.lang === "ENG" ? "eng" : "esp";
+  /**
+   * Update modal content based on language
+   * @param {string} lang - "esp" or "eng"
+   */
+  function updateModalContent(lang) {
+    if (lang === "eng") {
+      body.innerHTML = body.dataset.en;
+    } else {
+      body.innerHTML = body.dataset.es;
+    }
 
-      // Cambia el texto del modal
-      const body = document.getElementById("helperBody");
-      body.innerHTML = lang === "eng" ? body.dataset.en : body.dataset.es;
+    // Re-attach event listeners to demo login buttons after content update
+    reattachDemoLoginListeners();
+  }
 
-      // Guarda el idioma en sesión
-      fetch("?idioma=" + lang);
-    });
-  });
+  /**
+   * Re-attach event listeners to demo login buttons
+   * This is needed because innerHTML removes the original event listeners
+   */
+  function reattachDemoLoginListeners() {
+    if (typeof setupDemoLogins === "function") {
+      setupDemoLogins();
+    }
+  }
 });
