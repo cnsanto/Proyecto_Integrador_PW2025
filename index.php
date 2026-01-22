@@ -16,6 +16,13 @@ $idioma = $_SESSION['idioma'] ?? 'eng';
 // Cargar configuración
 require_once 'FutMatch/src/app/config.php';
 
+// Define root URL for portfolio CSS/JS (different from BASE_URL which points to FutMatch/)
+if ($_SERVER['SERVER_NAME'] === 'localhost') {
+    define("ROOT_URL", "/Proyecto_Integrador_PW2025/");
+} else {
+    define("ROOT_URL", "/");
+}
+
 // Resalta la página actual en el navbar
 $current_page = 'index';
 $page_title = "Inicio";
@@ -216,8 +223,8 @@ $data = $cv[$idioma];
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- CSS Proyectos -->
-    <link rel="stylesheet" href="index.css?v=<?= time() ?>" />
-    <link rel="stylesheet" href="contact-bubble.css?v=<?= time() ?>" />
+    <link rel="stylesheet" href="<?= ROOT_URL ?>index.css?v=<?= time() ?>" />
+    <link rel="stylesheet" href="<?= ROOT_URL ?>contact-bubble.css?v=<?= time() ?>" />
 </head>
 
 <body>
