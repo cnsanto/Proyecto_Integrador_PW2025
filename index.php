@@ -31,19 +31,19 @@ $page_title = "Inicio";
 $cv = [
     'esp' => [
         'titulo' => 'Camila Santo', // Used in hero
-        'subtitulo' => 'Desarrolladora de Software',
+        'subtitulo' => 'Analista de Datos | Técnica en Desarrollo de Software | Optimización y Automatización de procesos',
         'intro' => '¡Hola!',
-        'carta_presentacion' => '¡Muchas gracias por visitar mi portafolio! Aquí encontrarás un resumen de mi trayectoria laboral y académica.
-        También podrás conocer mis habilidades técnicas y lingüísticas, así como demos de proyectos. 
-        Si te interesa mi perfil para una oportunidad laboral, encontrarás mis datos de contacto tanto en el encabezado como al final de la página.
-        Un poco sobre mí: soy una persona con mucha energía, apasionada por aprender y crecer, y siempre dispuesta a desafiarme en cada proyecto. 
-        Soy detallista y disfruto resolver problemas de forma creativa.
-        Me apasionan el diseño y la atención a los detalles. Soy muy organizada en mi trabajo y me gusta documentar todo lo que puedo. 
-        Además, disfruto estandarizar tareas y buscar la máxima eficiencia: todo lo que se pueda automatizar, será automatizado.
-        ¡Espero que disfrutes recorriendo mi portafolio!
-        
-        DISCLAIMER: Por favor tener en cuenta que tanto este portafolio como los proyectos aquí demostrados fueron desarrollados con fines personales y/o educativos, por lo que no están disponibles para su uso comercial.
-        ',
+        'carta_presentacion' => '¡Muchas gracias por visitar mi portafolio! Aquí encontrarás un resumen de mi trayectoria laboral y académica,
+mis habilidades técnicas y lingüísticas, así como demos de proyectos.
+Si te interesa mi perfil, encontrarás mis datos de contacto tanto en el encabezado como al final de la página.
+
+Soy una persona apasionada por el análisis de datos y la tecnología, con especial interés en especializarme en Ciencia de Datos.
+Disfruto transformar datos en información útil para la toma de decisiones, y me entusiasma trabajar con SQL y automatización de procesos.
+Soy organizada, detallista y convencida de que todo lo que se pueda automatizar, debe automatizarse.
+
+¡Espero que disfrutes recorriendo mi portafolio!
+
+DISCLAIMER: Este portafolio y los proyectos aquí demostrados fueron desarrollados con fines personales y/o educativos, por lo que no están disponibles para su uso comercial.',
         'resumen_it' => 'Resumen IT',
         'experiencia' => 'Experiencia Laboral',
         'educacion' => 'Historia Académica',
@@ -72,28 +72,70 @@ $cv = [
         ],
 
         'backoffice' => [
-            'puesto' => 'Back Office de Desarrollo | Project Management',
+            'puesto' => 'IT Back-Office | Análisis de Datos y Sistemas | Optimización de Procesos',
             'empresa' => 'SoftGuard Tech de Argentina SRL',
+            'location' => 'Buenos Aires, Argentina',
             'periodo' => 'Enero 2025 - Junio 2025',
             'tareas' => [
-                'Organización de tareas en el área de Desarrollo.',
-                'Asistencia y planificación de proyectos.',
-                'QA: detección y análisis de problemas.',
-                'Optimización de flujos de trabajo.',
-                'Gestión de recursos internos y externos.'
+                'Análisis y modelado de datos en SQL Server, asegurando integridad y consistencia de la información.',
+                'Automatización de reportes con JavaScript y Google Apps Script, reduciendo tiempos de procesamiento manual.',
+                'Monitoreo de métricas bajo metodología Kanban (Jira) para detección de cuellos de botella.',
+                'Detección de incidencias (QA) y documentación de soluciones en Confluence.',
+                'Desarrollo de scripts de automatización (Ext JS / Google Apps Script) para estructuración de información.'
             ]
         ],
 
         'junior' => [
-            'puesto' => 'Desarrolladora Junior | Full-Stack',
-            'empresa' => 'ANSES',
+            'puesto' => 'IT Back-Office | Análisis de Datos y Sistemas | Optimización de Procesos',
+            'empresa' => 'Administración Nacional de Seguridad Social (ANSES)',
+            'location' => 'Buenos Aires, Argentina',
             'periodo' => 'Junio 2025 - Actualidad',
             'tareas' => [
-                'Documentación y planificación de sistemas.',
-                'QA y análisis de incidencias.',
-                'Manejo de COBOL y DB2 en Mainframe.',
-                'Desarrollo web con HTML, CSS, JavaScript y Java.'
+                'Gestión y consulta de grandes volúmenes de datos con SQL Server y DB2 en entornos Mainframe.',
+                'Análisis de métricas operativas y monitoreo de incidencias en Azure DevOps.',
+                'Automatización de reportes mediante Google Sheets avanzado (fórmulas, gráficos y tablas dinámicas).',
+                'Documentación técnica y modelado de flujos de datos para la optimización de procesos.',
+                'Colaboración en planificación de sistemas con enfoque analítico.'
             ]
+        ],
+
+        'zen_hostel' => [
+            'puesto' => 'Asistente Administrativa | Automatización y Gestión de Información (Inglés)',
+            'empresa' => 'Zen Hostel',
+            'location' => 'Budapest, Hungary',
+            'periodo' => 'Mayo 2024 – Agosto 2024',
+            'tareas' => [
+                'Estructuración de bases de datos operativas con Google Spreadsheets y Forms para control administrativo.',
+                'Auditoría y reporte de información ante organismos gubernamentales.'
+            ]
+
+        ],
+
+        'cosco' => [
+            'puesto' => 'Back Office | Document Organization and Information Management',
+            'empresa' => 'Cosco Shipping Lines',
+            'location' => 'Buenos Aires, Argentina',
+            'periodo' => 'April 2022 – February 2024',
+            'tareas' => [
+                'Gestión y control de documentación crítica de exportación con sucursales internacionales y clientes.',
+                'Estandarización de procesos y estructuración de flujos de información para mejorar trazabilidad y archivo digital.',
+                'Optimización de flujos administrativos, reduciendo inconsistencias en registros de seguimiento.',
+                'Coordinación de bases de datos para soporte de auditorías y reportes corporativos.'
+            ]
+
+        ],
+
+        'bratton' => [
+            'puesto' => 'Back Office | Document Organization and Information Management',
+            'empresa' => 'Bratton S.R.L',
+            'location' => 'Buenos Aires, Argentina',
+            'periodo' => 'August 2021 – April 2022',
+            'tareas' => [
+                'Seguimiento y control de operaciones de importación y exportación, garantizando cumplimiento de plazos.',
+                'Estandarización de procesos administrativos para optimizar la trazabilidad de información de clientes.',
+                'Gestión de inventarios y soporte en compras con actualización constante de registros operativos.'
+            ]
+
         ],
 
         'educacion_detalle' => [
@@ -103,7 +145,18 @@ $cv = [
                 '32 de 34 materias aprobadas | Promedio: 8.72.',
                 'Formación en programación estructurada y orientada a objetos.',
                 'Especialización en diseño, modelado y gestión de bases de datos con SQL Server.',
-                'Conocimientos adquiridos en C, C++, C# (.NET), HTML, CSS y JavaScript.'
+                'Conocimientos adquiridos en C, C++, C# (.NET), HTML, CSS y JavaScript.',
+                'Fundamentos de electrónica, arquitectura de computadoras y sistemas de numeración.',
+                'Estructuras de datos y algoritmos: recursividad, listas, árboles, memoria dinámica y análisis numérico.',
+                'Sistemas operativos: procesos, administración de memoria, filesystem y entrada/salida.',
+                'Redes de computadoras: protocolos de comunicación, arquitecturas de red, ruteo IP y redes WiFi.',
+                'Programación en tiempo real: procesos, hilos, semáforos, sincronización y comunicación entre procesos.',
+                'Testing: fundamentos, métodos y técnicas de prueba, manejo de excepciones y niveles de testing.',
+                'Ingeniería de requisitos: análisis, especificación, casos de uso y modelado en UML.',
+                'Ingeniería de software: arquitectura, diseño, gestión de proyectos, administración de riesgos y metodologías ágiles.',
+                'Seguridad informática: seguridad perimetral, control de acceso, criptografía y administración de datos.',
+                'Programación web: cliente/servidor, PHP, XML/JSON, webservices y patrón MVC.',
+                'Matemática aplicada: cálculo, álgebra lineal, lógica proposicional, grafos y análisis numérico.'
             ],
         ],
 
@@ -116,22 +169,19 @@ $cv = [
 
     'eng' => [
         'titulo' => 'Camila Santo',
-        'subtitulo' => 'Software Developer',
+        'subtitulo' => 'Data Analysis | Software Development Technician | Process Automation',
         'intro' => 'Hi!',
-        'carta_presentacion' => 'Thank you for visiting my portfolio. 
-        Here you will find a summary of my professional and academic background.
-        You will also be able to explore my skills with some project demos. 
-        If you are interested in my profile for a job opportunity, you can find my contact information both at the top and at the bottom of this page.      
-        A little about me: I am a highly energetic person, passionate about learning and growing, and always willing to challenge myself in every project. 
-        I am detail-oriented and enjoy solving problems in creative ways.        
-        I have a strong interest in design and attention to detail. 
-        I am very organized in my work and I like to document everything I can. 
-        I also enjoy standardizing tasks and striving for maximum efficiency — anything that can be automated, will be automated!
-        I hope you enjoy exploring my portfolio.
+        'carta_presentacion' => "Thank you so much for visiting my portfolio! Here you'll find a summary of my professional and academic background,
+          my technical and language skills, as well as project demos.
+          If my profile interests you, feel free to reach out — my contact details are in the header and at the bottom of the page.
 
-        DISCLAIMER: Please note that this portfolio and the projects showcased here were developed for personal and/or educational purposes only and are not available for commercial use.
-        Additionally, please understand that some of the projects are designed and documented exclusively in Spanish.
-        ',
+          I'm passionate about data analysis and technology, with a strong interest in specializing in Data Science.
+          I enjoy turning data into meaningful insights for decision-making, and I'm enthusiastic about SQL and process automation.
+          I'm organized, detail-oriented, and firmly believe that everything that can be automated, should be automated.
+
+          I hope you enjoy exploring my portfolio!
+
+          DISCLAIMER: This portfolio and the projects demonstrated here were developed for personal and/or educational purposes and are not available for commercial use.",
         'resumen_it' => 'IT Summary',
         'experiencia' => 'Work Experience',
         'educacion' => 'Academic Background',
@@ -159,29 +209,69 @@ $cv = [
             'Azure DevOps'
         ],
 
-        'backoffice' => [
-            'puesto' => 'Development Back Office | Project Management',
-            'empresa' => 'SoftGuard Tech de Argentina SRL',
-            'periodo' => 'January 2025 – June 2025',
+        'junior' => [
+            'puesto' => 'IT Back-Office | Data Analysis & Process Optimization',
+            'empresa' => 'ANSES (National Social Security Administration)',
+            'location' => 'Buenos Aires, Argentina',
+            'periodo' => 'June 2025 - Now',
             'tareas' => [
-                'Organized tasks within the Development area.',
-                'Assisted in development planning.',
-                'QA: detected and analyzed issues.',
-                'Improved workflow efficiency.',
-                'Managed internal and external resources.'
+                'Manage and query large-scale datasets using SQL Server and DB2 in Mainframe environments, ensuring technical data integrity.',
+                'Analyze operational metrics and monitor incidents via Azure DevOps to ensure process quality and business continuity.',
+                'Automate control reports using advanced Google Sheets techniques (logical functions, charts, data blending, and pivot tables).',
+                'Create technical documentation and data flow modeling aimed at process optimization and systemic efficiency.',
+                'Collaborate in systems planning, providing analytical insights for workflow streamlining and information structuring.'
             ]
         ],
 
-        'junior' => [
-            'puesto' => 'Junior Developer | Full-Stack',
-            'empresa' => 'ANSES',
+        'backoffice' => [
+            'puesto' => 'IT Back-Office | Data Analysis & Process Optimization',
+            'empresa' => 'SoftGuard Tech de Argentina SRL',
+            'location' => 'Buenos Aires, Argentina',
+            'periodo' => 'January 2025 – June 2025',
+            'tareas' => [
+                'Performed data modeling and analysis in SQL Server, ensuring information consistency across the product ecosystem.',
+                'Automated operational reports using JavaScript and Google Apps Script, significantly reducing manual data processing time.',
+                'Monitored performance metrics under Kanban (Jira) methodology to detect bottlenecks and optimize development lifecycles.',
+                'Conducted incident detection (QA) and continuous technical process improvement, documenting solutions in Confluence for knowledge traceability.',
+                'Developed automation scripts (Ext JS / Google Apps Script) focused on information structuring and operational order.'
+            ]
+        ],
+
+        'zen_hostel' => [
+            'puesto' => 'Administrative Assistant | Data Management & Automation (English)',
+            'empresa' => 'Zen Hostel',
+            'location' => 'Budapest, Hungary',
             'periodo' => 'June 2025 - Now',
             'tareas' => [
-                'System documentation and planning.',
-                'QA and issue analysis.',
-                'COBOL and DB2 on Mainframe.',
-                'Web development with HTML, CSS, JavaScript and Java.'
+                'Structured operational databases using Google Spreadsheets and Google Forms for corporate administrative control.',
+                'Audited and reported information to government agencies, ensuring the accuracy of submitted data.'
             ]
+
+        ],
+
+        'cosco' => [
+            'puesto' => 'Back Office | Document Organization and Information Management',
+            'empresa' => 'Cosco Shipping Lines',
+            'location' => 'Buenos Aires, Argentina',
+            'periodo' => 'April 2022 – February 2024',
+            'tareas' => [
+                'Managed critical export documentation, guaranteeing data integrity in communications with international branches and clients.',
+                'Standardized operational processes and structured data flows to improve traceability and digital archiving of large datasets.',
+                'Optimized administrative workflows, reducing data entry inconsistencies and ensuring precision in tracking records.'
+            ]
+
+        ],
+
+        'bratton' => [
+            'puesto' => 'Back Office | Document Organization and Information Management',
+            'empresa' => 'Bratton S.R.L',
+            'location' => 'Buenos Aires, Argentina',
+            'periodo' => 'August 2021 – April 2022',
+            'tareas' => [
+                'Tracked import/export operations, ensuring the integrity of critical documentation and meeting strict deadlines.',
+                'Improved operational order and standardized administrative processes to optimize customer information traceability.'
+            ]
+
         ],
 
         'educacion_detalle' => [
@@ -191,7 +281,18 @@ $cv = [
                 '32 out of 34 courses completed | GPA: 8.72',
                 'Training in structured and object-oriented programming.',
                 'Specialization in database design, modeling, and management with SQL Server.',
-                'Knowledge acquired in C, C++, C# (.NET), HTML, CSS, and JavaScript.'
+                'nowledge acquired in C, C++, C# (.NET), HTML, CSS, and JavaScript.',
+                'Fundamentals of electronics, computer architecture, and numbering systems.',
+                'Data structures and algorithms: recursion, linked lists, trees, dynamic memory, and numerical analysis.',
+                'Operating systems: processes, memory management, filesystem, and I/O.',
+                'Computer networks: communication protocols, network architectures, IP routing, and WiFi networks.',
+                'Real-time programming: processes, threads, semaphores, synchronization, and inter-process communication.',
+                'Testing: fundamentals, testing methods and techniques, exception handling, and testing levels.',
+                'Requirements engineering: analysis, specification, use cases, and UML modeling.',
+                'Software engineering: architecture, design, project management, risk administration, and agile methodologies.',
+                'Computer security: perimeter security, access control, cryptography, and data administration.',
+                'Web programming: client/server architecture, PHP, XML/JSON, web services, and MVC pattern.',
+                'Applied mathematics: calculus, linear algebra, propositional logic, graph theory, and numerical analysis.'
             ],
         ],
 
@@ -240,10 +341,10 @@ $data = $cv[$idioma];
             <ul class="dropdown-menu dropdown-menu-dark shadow">
                 <li><a class="dropdown-item" href="https://drive.google.com/file/d/12dJlfdxKq5GtW7a6Vfyw2u400JxZJCMv/view?usp=drive_link" target="_blank"><i class="bi bi-flag-fill me-2"></i>Español</a></li>
                 <li><a class="dropdown-item" href="https://drive.google.com/file/d/1WO_OnuFwMZa9AKB_hs03HWMhZbDpJOyj/view?usp=drive_link" target="_blank"><i class="bi bi-flag me-2"></i>English</a></li>
-                <li>
+                <!--<li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="https://drive.google.com/file/d/1WLsTf_6H9nsn2q9oeuQDjIT-kqePhaLr/view?usp=drive_link" target="_blank"><i class="bi bi-files me-2"></i>Ambos / Both</a></li>
+                <li><a class="dropdown-item" href="https://drive.google.com/file/d/1WLsTf_6H9nsn2q9oeuQDjIT-kqePhaLr/view?usp=drive_link" target="_blank"><i class="bi bi-files me-2"></i>Ambos / Both</a></li>-->
             </ul>
         </div>
 
@@ -360,6 +461,7 @@ $data = $cv[$idioma];
                         <div class="role-title"><?= $data['junior']['puesto'] ?></div>
                         <div class="company-name"><?= $data['junior']['empresa'] ?></div>
                         <div class="period-badge"><?= $data['junior']['periodo'] ?></div>
+                        <div class="period-badge"><?= $data['junior']['location'] ?></div>
                         <ul class="text-muted ps-3 mb-0">
                             <?php foreach ($data['junior']['tareas'] as $tarea): ?>
                                 <li><?= $tarea ?></li>
@@ -368,25 +470,42 @@ $data = $cv[$idioma];
                     </div>
 
                     <!-- Job 2 -->
-                    <div class="timeline-item border-0 mb-0 pb-0">
+                    <div class="timeline-item">
                         <div class="role-title"><?= $data['backoffice']['puesto'] ?></div>
                         <div class="company-name"><?= $data['backoffice']['empresa'] ?></div>
                         <div class="period-badge"><?= $data['backoffice']['periodo'] ?></div>
+                        <div class="period-badge"><?= $data['backoffice']['location'] ?></div>
                         <ul class="text-muted ps-3 mb-0">
                             <?php foreach ($data['backoffice']['tareas'] as $tarea): ?>
                                 <li><?= $tarea ?></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
-                </div>
 
-                <!-- Languages (Moved here) -->
-                <h2 id="languages" class="mb-4"><i class="bi bi-translate me-2"></i> <?= $data['idiomas'] ?></h2>
-                <div class="glass-card p-4">
-                    <div>
-                        <?php foreach ($data['idiomas_detalle'] as $idiomaItem): ?>
-                            <span class="skill-tag fs-6 px-3 py-2 m-1"><?= $idiomaItem ?></span>
-                        <?php endforeach; ?>
+                    <!-- Job 4 -->
+                    <div class="timeline-item">
+                        <div class="role-title"><?= $data['cosco']['puesto'] ?></div>
+                        <div class="company-name"><?= $data['cosco']['empresa'] ?></div>
+                        <div class="period-badge"><?= $data['cosco']['periodo'] ?></div>
+                        <div class="period-badge"><?= $data['cosco']['location'] ?></div>
+                        <ul class="text-muted ps-3 mb-0">
+                            <?php foreach ($data['cosco']['tareas'] as $tarea): ?>
+                                <li><?= $tarea ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+
+                    <!-- Job 5 -->
+                    <div class="timeline-item">
+                        <div class="role-title"><?= $data['bratton']['puesto'] ?></div>
+                        <div class="company-name"><?= $data['bratton']['empresa'] ?></div>
+                        <div class="period-badge"><?= $data['bratton']['periodo'] ?></div>
+                        <div class="period-badge"><?= $data['bratton']['location'] ?></div>
+                        <ul class="text-muted ps-3 mb-0">
+                            <?php foreach ($data['bratton']['tareas'] as $tarea): ?>
+                                <li><?= $tarea ?></li>
+                            <?php endforeach; ?>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -408,10 +527,20 @@ $data = $cv[$idioma];
 
                 <!-- IT Skills -->
                 <h2 id="skills" class="mb-4"><i class="bi bi-cpu me-2"></i> <?= $data['skills_titulo'] ?></h2>
-                <div class="glass-card p-4">
+                <div class="glass-card p-4 mb-5">
                     <div class="d-flex flex-wrap">
                         <?php foreach ($data['skills_lista'] as $skill): ?>
                             <span class="skill-tag fs-6 px-3 py-2 m-1"><?= $skill ?></span>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <h2 id="languages" class="mb-4"><i class="bi bi-translate me-2"></i> <?= $data['idiomas'] ?></h2>
+                <div class="glass-card p-4">
+                    <div>
+                        <?php foreach ($data['idiomas_detalle'] as $idiomaItem): ?>
+                            <span class="skill-tag fs-6 px-3 py-2 m-1"><?= $idiomaItem ?></span>
                         <?php endforeach; ?>
                     </div>
                 </div>

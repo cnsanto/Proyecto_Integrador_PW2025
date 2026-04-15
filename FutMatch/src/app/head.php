@@ -11,6 +11,7 @@ if (!defined('BASE_URL')) {
   require_once __DIR__ . '/config.php';
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es" data-bs-theme="dark">
 
